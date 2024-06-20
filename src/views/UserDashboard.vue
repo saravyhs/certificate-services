@@ -17,7 +17,6 @@
   </div>
 </template>
 
-
 <script>
 import SideBar from "@/components/user-dashboard/SideBar.vue";
 import ContainDash from "@/components/user-dashboard/ContainDash.vue";
@@ -31,5 +30,6 @@ export default {
     FootDash,
     NavHeader,
   },
+  //note
 };
 </script>
