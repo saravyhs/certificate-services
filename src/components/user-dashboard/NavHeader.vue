@@ -1,8 +1,8 @@
 <template>
-  <div class="main-header">
+  <div class="main-header header-shadow">
     <div class="main-header-logo">
       <!-- Logo Header -->
-      <div class="logo-header" data-background-color="dark">
+      <div class="logo-header" data-background-color="blue">
         <a href="index.html" class="logo">
           <img
             src="@/assets/img/kaiadmin/logo_light.svg"
@@ -33,18 +33,19 @@
         <nav
           class="navbar navbar-header-left navbar-expand-lg navbar-form nav-search p-0 d-none d-lg-flex"
         >
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <button type="submit" class="btn btn-search pe-1">
+          <!-- <div class="input-group">
+          <div class="input-group-prepend">
+          <button type="submit" class="btn btn-search pe-1">
                 <i class="fa fa-search search-icon"></i>
               </button>
-            </div>
-            <input type="text" placeholder="Search ..." class="form-control" />
           </div>
+          <input type="text" placeholder="Search ..." class="form-control" />
+          </div> -->
+          <div class="text-part">ដាក់ពាក្យស្នើសុំ/</div>
         </nav>
 
         <ul class="navbar-nav topbar-nav ms-md-auto align-items-center">
-          <li
+          <!-- <li
             class="nav-item topbar-icon dropdown hidden-caret d-flex d-lg-none"
           >
             <a
@@ -295,7 +296,7 @@
                 </div>
               </div>
             </div>
-          </li>
+          </li> -->
 
           <li class="nav-item topbar-user dropdown hidden-caret">
             <a
@@ -357,3 +358,16 @@
     <!-- End Navbar -->
   </div>
 </template>
+
+<style scoped>
+.text-part {
+  font-family: "Kantumruy Pro", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  color: #3074fd;
+}
+.header-shadow {
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15);
+}
+</style>
