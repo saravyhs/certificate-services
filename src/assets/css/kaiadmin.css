@@ -910,8 +910,9 @@ body {
   padding: 0px !important;
   background: transparent !important;
   color: #2A2F5B !important; }
-  .btn-toggle:hover, .btn-toggle:focus {
-    opacity: 1; }
+
+.btn-toggle:hover, .btn-toggle:focus {
+  opacity: 1; }
 
 /* Sidebar style 2 */
 .sidebar.sidebar-style-2 .nav .nav-item {
@@ -1215,7 +1216,7 @@ body[data-background-color="dark"] .border-top {
   background: rgba(185, 185, 185, 0.18) !important; }
 
 .btn-toggle {
-  color: #fff !important; }
+  color: #ffffff !important; }
 
 .logo-header .navbar-toggler .navbar-toggler-icon,
 .logo-header .more,
