@@ -37,7 +37,7 @@
             </router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/login">
+            <router-link to="/user-dashboard/list-services" class="nav-link">
               <i class="fas fa-list"></i>
               <p>បញ្ជីសេវា</p>
             </router-link>
