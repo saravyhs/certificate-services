@@ -31,7 +31,7 @@
       <div class="sidebar-content">
         <ul class="nav nav-secondary">
           <li class="nav-item">
-            <router-link to="/application/register" class="nav-link">
+            <router-link to="/user-dashboard" class="nav-link">
               <i class="fas fa-file-word"></i>
               <p>ដាក់ពាក្យស្នើសុំ</p>
             </router-link>

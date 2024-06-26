@@ -1,8 +1,7 @@
 <template>
-  <div class="col-md-6">
-    <P>Form 3</P>
-  </div>
-  <div class="col-md-6">
-    <P>Form 3</P>
+  <div class="row">
+    <div class="col-md-12">
+      បង្ហាញ Components ឯកសារភ្ជាប់ទៅតាមការជ្រើសរើសសេវាសញ្ញាបត្រនិមួយៗ
+    </div>
   </div>
 </template>

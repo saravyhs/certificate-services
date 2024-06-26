@@ -1,8 +1,8 @@
 <template>
-  <div class="col-md-6">
-    <P>Form 2</P>
+  <div class="row">
+    <div class="col-md-12">ជ្រើសរើសប្រភេទសញ្ញាបត្រ</div>
   </div>
-  <div class="col-md-6">
-    <P>Form 2</P>
+  <div class="row">
+    <div class="col-md-12">បំពេញទម្រង់សេវាតាមប្រភេទសញ្ញាបត្រនិមួយៗ</div>
   </div>
 </template>
