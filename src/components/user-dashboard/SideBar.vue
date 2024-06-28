@@ -167,7 +167,6 @@
 .nav-link:hover {
   /* Change text color on hover */
   background-color: #fff;
-
   /* Change background color on hover */
   cursor: pointer;
 }
