@@ -30,29 +30,42 @@
     <div class="sidebar-wrapper scrollbar scrollbar-inner">
       <div class="sidebar-content">
         <ul class="nav nav-secondary">
-          <li class="nav-item">
+          <li
+            class="nav-item"
+            :class="{ active: $route.path == '/user-dashboard' }"
+          >
             <router-link to="/user-dashboard" class="nav-link">
               <i class="fas fa-file-word"></i>
               <p>ដាក់ពាក្យស្នើសុំ</p>
             </router-link>
           </li>
-          <li class="nav-item">
+          <li
+            class="nav-item"
+            :class="{ active: $route.path == '/user-dashboard/list-services' }"
+          >
             <router-link to="/user-dashboard/list-services" class="nav-link">
               <i class="fas fa-list"></i>
               <p>បញ្ជីសេវា</p>
             </router-link>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a href="" class="nav-link">
               <i class="fas fa-print"></i>
               <p>បោះពុម្ពបង្កាន់ដៃ</p>
             </a>
-          </li>
-          <li class="nav-item">
-            <a href="" class="nav-link">
+          </li> -->
+          <li
+            class="nav-item"
+            :class="{
+              active:
+                $route.path == '/user-dashboard/profile' ||
+                $route.path == '/user-dashboard/profile-setting',
+            }"
+          >
+            <router-link to="/user-dashboard/profile" class="nav-link">
               <i class="fas fa-user"></i>
               <p>គណនេយ្យ</p>
-            </a>
+            </router-link>
           </li>
         </ul>
         <!-- <ul class="nav nav-secondary">
@@ -90,10 +103,16 @@
     </div>
   </div>
 </template>
+
 <style>
 .sidebar {
   background-color: #3074fd;
   color: #ffffff !important;
+}
+
+.sidebar .nav > .nav-item.active > a {
+  background: rgba(255, 255, 255);
+  color: #2a2f5b !important;
 }
 
 .nav-link p {
@@ -166,8 +185,7 @@
 
 .nav-link:hover {
   /* Change text color on hover */
-  background-color: #fff;
-
+  background-color: #ffffff;
   /* Change background color on hover */
   cursor: pointer;
 }

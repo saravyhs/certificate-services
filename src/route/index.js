@@ -7,6 +7,8 @@ import Register from "@/views/Register.vue";
 import UserDashboard from "@/views/UserDashboard.vue";
 import ContainDash from "@/components/user-dashboard/ContainDash.vue";
 import ListServices from "@/components/user-dashboard/list-services/ListServices.vue";
+import Profile from "@/components/user-dashboard/profile/Profile.vue";
+import ProfileSetting from "@/components/user-dashboard/profile/ProfileSetting.vue";
 
 const routes = [
   { path: "/", component: Home },
@@ -18,13 +20,23 @@ const routes = [
     children: [
       {
         path: "",
-        name: "ContainDash",
+        name: "ដាក់ពាក្យស្នើសុំ",
         component: ContainDash,
       },
       {
         path: "/user-dashboard/list-services",
-        name: "ListServices",
+        name: "បញ្ជីសេវា",
         component: ListServices,
+      },
+      {
+        path: "/user-dashboard/profile",
+        name: "គណនេយ្យ",
+        component: Profile,
+      },
+      {
+        path: "/user-dashboard/profile-setting",
+        name: "ការកំណត់",
+        component: ProfileSetting,
       },
     ],
   },

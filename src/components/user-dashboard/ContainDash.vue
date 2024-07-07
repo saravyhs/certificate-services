@@ -6,24 +6,20 @@
       >
         <step-bar />
       </div>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="card card-round">
-            <div class="card-body p-5 ms-5 me-5">
-              <form-applicant v-if="stepActive == 1" />
-              <form-service v-if="stepActive == 2" />
-              <form-doc v-if="stepActive == 3" />
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="float-end">
-                    <button class="btn btn-primary" @click="decrementStep">
-                      previous-step
-                    </button>
-                    <button class="btn btn-primary" @click="incrementStep">
-                      next-step
-                    </button>
-                  </div>
-                </div>
+      <div class="card card-round">
+        <div class="card-body p-5 ms-5 me-5">
+          <form-applicant v-if="stepActive == 1" />
+          <form-service v-if="stepActive == 2" />
+          <form-doc v-if="stepActive == 3" />
+          <div class="row">
+            <div class="col-md-12">
+              <div class="float-end">
+                <button class="btn btn-primary" @click="decrementStep">
+                  previous-step
+                </button>
+                <button class="btn btn-primary" @click="incrementStep">
+                  next-step
+                </button>
               </div>
             </div>
           </div>
