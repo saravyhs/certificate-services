@@ -77,15 +77,22 @@
                   <router-link
                     to="/user-dashboard/profile"
                     class="dropdown-item"
-                    ><div>គណនេយ្យ</div></router-link
                   >
+                    <i class="fas fa-user">គណនេយ្យ</i>
+                  </router-link>
                   <router-link
                     to="/user-dashboard/profile-setting"
                     class="dropdown-item"
-                    ><div>ការកំណត់</div></router-link
                   >
+                    <i class="fas fa-cog">ការកំណត់</i>
+                  </router-link>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#"><div>ចាកចេញ</div></a>
+                  <router-link
+                    to="/user-dashboard/profile-setting"
+                    class="dropdown-item"
+                  >
+                    <i class="fas fa-sign-out-alt">ចាកចេញ</i>
+                  </router-link>
                 </li>
               </div>
             </ul>
@@ -119,5 +126,8 @@ p {
 }
 .header-shadow {
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15);
+}
+.list-one-line * {
+  display: inline-block;
 }
 </style>
