@@ -632,7 +632,8 @@ body {
     .sidebar .nav > .nav-item, .sidebar[data-background-color="white"] .nav > .nav-item {
       display: list-item; }
       .sidebar .nav > .nav-item.active > a, .sidebar[data-background-color="white"] .nav > .nav-item.active > a {
-        background: rgba(0, 0, 0, 0.03);
+        /* background: rgba(0, 0, 0, 0.03); */
+        background: rgba(0, 0, 0, 0.10);
         color: #2A2F5B !important; }
         .sidebar .nav > .nav-item.active > a:before, .sidebar[data-background-color="white"] .nav > .nav-item.active > a:before {
           background: #1d7af3; }
@@ -646,7 +647,9 @@ body {
       .sidebar .nav > .nav-item.submenu, .sidebar[data-background-color="white"] .nav > .nav-item.submenu {
         background: rgba(0, 0, 0, 0.03); }
         .sidebar .nav > .nav-item.submenu > li > a i, .sidebar[data-background-color="white"] .nav > .nav-item.submenu > li > a i {
-          color: rgba(23, 125, 255, 0.76); }
+          /* color: rgba(23, 125, 255, 0.76); */
+          color: rgba(23, 255, 81, 0.76); 
+        }
       .sidebar .nav > .nav-item a, .sidebar[data-background-color="white"] .nav > .nav-item a {
         display: flex;
         align-items: center;

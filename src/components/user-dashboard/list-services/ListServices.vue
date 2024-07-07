@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="page-inner">
-      <div class="card">
+      <div class="card card-round mt-3">
         <div class="card-body">
           <table class="table table-striped">
             <thead>
