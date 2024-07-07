@@ -34,10 +34,8 @@
                   >
                 </td>
                 <td>
-                  <button
-                    type="button"
-                    class="btn btn-sm btn-outline-secondary"
-                  >
+                  <router-link to="/user-dashboard/view-service">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">
                     <span
                       ><svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -53,8 +51,8 @@
                     type="button"
                     class="btn btn-sm btn-outline-secondary"
                   >
-                    <span
-                      ><svg
+                    <span>
+                      <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 512 512"
                         height="1em"

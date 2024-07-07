@@ -9,6 +9,7 @@ import ContainDash from "@/components/user-dashboard/ContainDash.vue";
 import ListServices from "@/components/user-dashboard/list-services/ListServices.vue";
 import Profile from "@/components/user-dashboard/profile/Profile.vue";
 import ProfileSetting from "@/components/user-dashboard/profile/ProfileSetting.vue";
+import ServiceDetail from "@/components/user-dashboard/list-services/ServiceDetail.vue";
 
 const routes = [
   { path: "/", component: Home },
@@ -27,6 +28,11 @@ const routes = [
         path: "/user-dashboard/list-services",
         name: "បញ្ជីសេវា",
         component: ListServices,
+      },
+      {
+        path: "/user-dashboard/view-service",
+        name: "ព័ត៌មានសេវាលម្អិត",
+        component: ServiceDetail,
       },
       {
         path: "/user-dashboard/profile",
