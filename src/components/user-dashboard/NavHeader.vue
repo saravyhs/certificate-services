@@ -34,6 +34,12 @@
           class="navbar navbar-header-left navbar-expand-lg navbar-form nav-search p-0 d-none d-lg-flex"
         >
           <div class="text-part">{{ currentRoute }}</div>
+
+          <!-- aria-label="breadcrumb"
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Library</li>
+          </ol> -->
         </nav>
 
         <ul class="navbar-nav topbar-nav ms-md-auto align-items-center">
@@ -76,22 +82,28 @@
                   <div class="dropdown-divider"></div>
                   <router-link
                     to="/user-dashboard/profile"
-                    class="dropdown-item"
+                    class="dropdown-item list-one-line"
                   >
-                    <i class="fas fa-user">គណនេយ្យ</i>
+                    <i class="fas fa-user"></i>
+                    <span class="m-1"></span>
+                    <div>គណនេយ្យ</div>
                   </router-link>
                   <router-link
                     to="/user-dashboard/profile-setting"
-                    class="dropdown-item"
+                    class="dropdown-item list-one-line"
                   >
-                    <i class="fas fa-cog">ការកំណត់</i>
+                    <i class="fas fa-cog"></i>
+                    <span class="m-1"></span>
+                    <div>ការកំណត់</div>
                   </router-link>
                   <div class="dropdown-divider"></div>
                   <router-link
                     to="/user-dashboard/profile-setting"
-                    class="dropdown-item"
+                    class="dropdown-item list-one-line"
                   >
-                    <i class="fas fa-sign-out-alt">ចាកចេញ</i>
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span class="m-1"></span>
+                    <div>ចាកចេញ</div>
                   </router-link>
                 </li>
               </div>

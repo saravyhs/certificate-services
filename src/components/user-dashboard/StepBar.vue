@@ -1,7 +1,7 @@
 <template>
-  <div class="container">
+  <div class="container m-0">
     <div class="row">
-      <div class="col-12 text-center p-0 mt-1 mb-2">
+      <div class="col-12 p-0 mt-1 mb-2">
         <ul class="progressbar">
           <li
             id="step1"
