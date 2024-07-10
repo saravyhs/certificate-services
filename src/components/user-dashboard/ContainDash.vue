@@ -1,28 +1,52 @@
 <template>
   <div class="container">
     <div class="page-inner">
-      <div
-        class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4"
-      >
+      <div class="d-flex align-items-left flex-column flex-md-row pt-2 pb-4">
         <step-bar />
       </div>
       <div class="card card-round">
-        <div class="card-body p-5 ms-5 me-5">
+        <div class="card-body p-lg-5 mx-lg-5">
           <form-applicant v-if="stepActive == 1" />
           <form-service v-if="stepActive == 2" />
           <form-doc v-if="stepActive == 3" />
-          <div class="row">
-            <div class="col-md-12">
+          <!-- <div class="container overflow-hidden"> -->
+          <div class="row pt-2">
+            <div class="col-12">
               <div class="float-end">
-                <button class="btn btn-primary" @click="decrementStep">
-                  previous-step
+                <button class="btn btn-danger btn-rounded me-1" @click="cancel">
+                  សម្អាត
                 </button>
-                <button class="btn btn-primary" @click="incrementStep">
-                  next-step
+                <button
+                  class="btn btn-primary"
+                  :class="stepActive == 2 ? 'round-left' : 'btn-rounded'"
+                  @click="decrementStep"
+                  v-if="stepActive == 2 || stepActive == 3"
+                >
+                  ត្រឡប់
+                </button>
+                <button
+                  class="btn btn-primary"
+                  :class="
+                    stepActive == 2 || stepActive == 3
+                      ? 'round-right ms-1'
+                      : 'btn-rounded'
+                  "
+                  @click="incrementStep"
+                  v-if="stepActive == 1 || stepActive == 2"
+                >
+                  បន្ទាប់
+                </button>
+                <button
+                  class="btn btn-primary btn-rounded ms-1"
+                  @click="save"
+                  v-if="stepActive == 3"
+                >
+                  រក្សាទុក
                 </button>
               </div>
             </div>
           </div>
+          <!-- </div> -->
         </div>
       </div>
     </div>
@@ -54,4 +78,10 @@ export default {
 </script>
 
 <style scoped>
+.round-left {
+  border-radius: 20px 0 0 20px;
+}
+.round-right {
+  border-radius: 0 20px 20px 0;
+}
 </style>
