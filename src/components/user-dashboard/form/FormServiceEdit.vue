@@ -5,10 +5,10 @@
     <table class="table-borderless">
       <thead>
         <tr>
-          <th scope="col" class="text-center">ស្នើកែ</th>
-          <th scope="col" class="text-center">ព័ត៌មាន</th>
-          <th scope="col" class="text-center">ក្នុងវិញ្ញាបនបត្រចាស់</th>
-          <th scope="col" class="text-center">ក្នុងវិញ្ញាបនបត្រថ្មី</th>
+          <th scope="col" class="text-center fw-bold">ស្នើកែ</th>
+          <th scope="col" class="text-center fw-bold">ព័ត៌មាន</th>
+          <th scope="col" class="text-center fw-bold">ក្នុងវិញ្ញាបនបត្រចាស់</th>
+          <th scope="col" class="text-center fw-bold">ក្នុងវិញ្ញាបនបត្រថ្មី</th>
         </tr>
       </thead>
       <tbody>
@@ -22,7 +22,7 @@
               id="chkName"
             />
           </td>
-          <td class="p-1">
+          <td class="p-1" style="white-space: nowrap">
             <span> ឈ្មោះសិស្ស</span>
           </td>
           <td class="p-1">
@@ -54,7 +54,7 @@
               id="agree"
             />
           </td>
-          <td class="p-1">
+          <td class="p-1" style="white-space: nowrap">
             <span class=""> ភេទ</span>
           </td>
           <td class="p-1">
@@ -84,7 +84,7 @@
               id="agree"
             />
           </td>
-          <td class="p-1">
+          <td class="p-1" style="white-space: nowrap">
             <span class=""> ថ្ងៃខែឆ្នាំកំណើត</span>
           </td>
           <td class="p-1">
@@ -117,7 +117,7 @@
               v-model="chkPob"
             />
           </td>
-          <td class="p-1">
+          <td class="p-1" style="white-space: nowrap">
             <span class=""> ទីកន្លែងកំណើត</span>
           </td>
 
@@ -150,7 +150,7 @@
               v-model="chkfather"
             />
           </td>
-          <td class="p-1">
+          <td class="p-1" style="white-space: nowrap">
             <span class=""> ឈ្មោះឪពុក</span>
           </td>
           <td class="p-1">
@@ -182,7 +182,7 @@
               v-model="chkMother"
             />
           </td>
-          <td class="p-1">
+          <td class="p-1" style="white-space: nowrap">
             <span class=""> ឈ្មោះម្ដាយ</span>
           </td>
           <td class="p-1">
