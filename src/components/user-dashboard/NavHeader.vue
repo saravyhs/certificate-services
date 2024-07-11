@@ -97,10 +97,7 @@
                     <div>ការកំណត់</div>
                   </router-link>
                   <div class="dropdown-divider"></div>
-                  <router-link
-                    to="/user-dashboard/profile-setting"
-                    class="dropdown-item list-one-line"
-                  >
+                  <router-link to="/" class="dropdown-item list-one-line">
                     <i class="fas fa-sign-out-alt"></i>
                     <span class="m-1"></span>
                     <div>ចាកចេញ</div>

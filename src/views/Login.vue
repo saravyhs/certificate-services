@@ -1,66 +1,68 @@
 <template>
   <div class="login bg-primary">
     <div class="wrapper wrapper-login">
-      <div
-        class="container container-login animated fadeIn"
-        style="display: block"
-      >
-        <h3 class="text-center">Sign In</h3>
-        <form @submit.prevent="handleSubmit">
-          <div class="login-form">
-            <div class="form-group">
-              <label for="username"><b>Username</b></label>
-              <input
-                id="username"
-                name="username"
-                type="text"
-                class="form-control"
-                required=""
-                v-model="formData.userName"
-              />
-            </div>
-            <div class="form-group">
-              <label for="password"><b>Password</b></label>
-              <a href="#" class="link float-end">Forget Password ?</a>
-              <div class="position-relative">
+      <div class="card card-round">
+        <div class="card-body">
+          <form @submit.prevent="handleSubmit">
+            <div class="container">
+              <div class="text-center">
+                <img
+                  src="@/assets/img/bootstrap-logo@3x.png"
+                  alt="moeys logo"
+                  height="100"
+                />
+              </div>
+              <h3 class="text-center">ចូលប្រព័ន្ធ</h3>
+              <div class="row mb-2">
+                <div for="username" class="p-0 mb-1">ឈ្មោះអ្នកប្រើប្រាស់</div>
                 <input
-                  id="password"
-                  name="password"
-                  type="password"
+                  id="username"
+                  name="username"
+                  type="text"
                   class="form-control"
                   required=""
-                  v-model="formData.password"
+                  v-model="formData.userName"
                 />
-                <div class="show-password">
-                  <i class="icon-eye"></i>
+              </div>
+              <div class="row mb-4">
+                <div for="password" class="p-0 mb-1">ពាក្យសម្ងាត់</div>
+                <div class="position-relative p-0">
+                  <input
+                    id="password"
+                    name="password"
+                    type="password"
+                    class="form-control"
+                    required=""
+                    v-model="formData.password"
+                  />
+                  <div class="show-password">
+                    <i class="icon-eye"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-4">
+                <button
+                  type="submit"
+                  class="btn btn-primary col-12 float-end mt-3 mt-sm-0 fw-bold"
+                >
+                  ចូលប្រើប្រាស់
+                </button>
+              </div>
+              <div class="row">
+                <div class="col p-0 text-left">
+                  <router-link to="/register" class="p-0"
+                    ><div>ចុះឈ្មោះប្រើប្រាស់</div></router-link
+                  >
+                </div>
+                <div class="col p-0 text-end">
+                  <router-link to="/register" class="p-0"
+                    ><div>ភ្លេចពាក្យសម្ងាត់</div></router-link
+                  >
                 </div>
               </div>
             </div>
-            <div class="form-group form-action-d-flex mb-3">
-              <div class="form-check">
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="rememberme"
-                />
-                <label class="custom-control-label m-0" for="rememberme"
-                  >Remember Me</label
-                >
-              </div>
-              <button
-                type="submit"
-                class="btn btn-primary col-md-5 float-end mt-3 mt-sm-0 fw-bold"
-              >
-                Sign In
-              </button>
-            </div>
-            <div class="login-account">
-              <span class="msg">Don't have an account yet ?</span>
-              <!-- <a href="#" id="show-signup" class="link">Sign Up</a> -->
-              <router-link to="/register">Sign Up</router-link>
-            </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   </div>
@@ -88,13 +90,23 @@ export default {
           return user;
       });
       if (!user) {
-        console.log("no");
+        console.log("login not successful.");
       } else {
         this.$router.push("/user-dashboard");
-        //window.
-        //console.log(user);
       }
     },
   },
 };
 </script>
+
+<style scoped>
+div {
+  font-family: "Kantumruy Pro", sans-serif;
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 400;
+}
+h3 {
+  font-family: "Kantumruy Pro", sans-serif;
+}
+</style>
