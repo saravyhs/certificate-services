@@ -10,9 +10,11 @@
         <input
           class="form-check-input"
           type="radio"
-          name="flexRadioDefault"
-          id="flexRadioDefault2"
+          name="diploma"
+          id="diploma"
+          value="diploma"
           checked
+          v-model="formData.verifyByCertType"
         />
         <span class="form-check-label" for="flexRadioDefault2">
           សញ្ញាបត្រទុតិយភូមិ
@@ -22,8 +24,10 @@
         <input
           class="form-check-input"
           type="radio"
-          name="flexRadioDefault"
-          id="flexRadioDefault2"
+          name="temp_cert"
+          id="temp_cert"
+          value="temp_cert"
+          v-model="formData.verifyByCertType"
         />
         <span class="form-check-label" for="flexRadioDefault2">
           វិញ្ញាបនបត្របណ្ដោះអាសន្ន
@@ -33,8 +37,10 @@
         <input
           class="form-check-input"
           type="radio"
-          name="flexRadioDefault"
-          id="flexRadioDefault2"
+          name="graduate_cert"
+          id="graduate_cert"
+          value="graduate_cert"
+          v-model="formData.verifyByCertType"
         />
         <span class="form-check-label" for="flexRadioDefault2">
           វិញ្ញាបនបត្របញ្ចប់ការសិក្សាថ្នាក់ទី១២
@@ -43,3 +49,32 @@
     </div>
   </div>
 </template>
+
+<script>
+import { useApplicant } from "@/store/applicant";
+import { mapState, mapActions } from "pinia";
+
+export default {
+  data() {
+    return {
+      formData: {
+        verifyByCertType: "",
+      },
+    };
+  },
+  mounted() {
+    this.formData = this.verifyData;
+    //console.log(this.formData);
+  },
+  unmounted() {
+    this.setVerify(this.formData);
+    //console.log(this.formData);
+  },
+  computed: {
+    ...mapState(useApplicant, ["verifyData"]),
+  },
+  methods: {
+    ...mapActions(useApplicant, ["setVerify"]),
+  },
+};
+</script>

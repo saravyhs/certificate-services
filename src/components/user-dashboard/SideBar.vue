@@ -34,7 +34,10 @@
             :class="{ active: $route.path == '/user-dashboard' }"
           >
             <router-link to="/user-dashboard" class="nav-link">
-              <i class="fas fa-file-word"></i>
+              <!-- <i class="fas fa-file-word"></i> -->
+              <div class="icon">
+                <font-awesome-icon icon="fas fa-file-word" size="lg"/>
+              </div>              
               <p>ដាក់ពាក្យស្នើសុំ</p>
             </router-link>
           </li>
@@ -43,7 +46,10 @@
             :class="{ active: $route.path == '/user-dashboard/list-services' }"
           >
             <router-link to="/user-dashboard/list-services" class="nav-link">
-              <i class="fas fa-list"></i>
+              <!-- <i class="fas fa-list"></i> -->
+              <div class="iconlist">
+                <font-awesome-icon icon="fas fa-list" size="lg"/>
+              </div>
               <p>បញ្ជីសេវា</p>
             </router-link>
           </li>
@@ -56,8 +62,11 @@
             }"
           >
             <router-link to="/user-dashboard/profile" class="nav-link">
-              <i class="fas fa-user"></i>
-              <p>គណនេយ្យ</p>
+              <!-- <i class="fas fa-user"></i> -->
+              <div class="icon">
+                <font-awesome-icon icon="fas fa-user" size="lg"/>
+              </div>
+              <p>គណនី</p>
             </router-link>
           </li>
         </ul>
@@ -74,7 +83,11 @@
 
 .sidebar .nav > .nav-item.active > a {
   background: rgba(255, 255, 255);
-  color: #2a2f5b !important;
+  color: #4d7cfe !important;
+}
+
+.sidebar .nav > .nav-item a:hover{
+  color: #4d7cfe !important;
 }
 
 .nav-link p {
@@ -94,7 +107,7 @@
   /* Remove underline from links */
 }
 
-.nav-link i {
+.nav-link i{
   color: #fff !important;
 }
 
@@ -145,5 +158,13 @@
   background-color: #ffffff;
   /* Change background color on hover */
   cursor: pointer;
+}
+.icon{
+  padding: 6px;
+  margin-right: 15px;
+}
+.iconlist{
+  padding: 6px;
+  margin-right: 12px;
 }
 </style>

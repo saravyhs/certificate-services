@@ -1,0 +1,5 @@
+1-login: eye icon not open not close
+2-register: form validation, interface not correct, not responsive when small screen.
+3-prfile user: when refresh sometime loading sometime not loading
+
+

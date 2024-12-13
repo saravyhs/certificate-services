@@ -200,13 +200,12 @@
 <script setup>
 import { useApplicantStore } from "@/store/applicantStore.js"
 import { mapState, mapActions, storeToRefs } from 'pinia'
-import { computed, onMounted, ref, defineProps } from 'vue';
+import { computed, onMounted, ref} from 'vue';
 import { formatKhmerNum, formatKhmerMonth, getDayKhmer, getMonthKhmer, getYearKhmer } from '@/utils/khmerUtils'; // Adjust path as per your project structure
 import router from "@/route";
 const applicantStore = useApplicantStore();
 const { joinedData } = storeToRefs(applicantStore)
 const date = new Date()
-
 
 const props = defineProps({
     id: {

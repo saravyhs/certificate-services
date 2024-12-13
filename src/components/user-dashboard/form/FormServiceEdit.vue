@@ -17,7 +17,7 @@
             <input
               type="checkbox"
               class="form-check-input"
-              v-model="chkName"
+              v-model="formData.is_name"
               name="agree"
               id="chkName"
             />
@@ -30,7 +30,7 @@
               type="text"
               class="form-control"
               name="oldName"
-              v-model="oldName"
+              v-model="formData.old_name"
             />
           </td>
           <td class="p-1">
@@ -38,7 +38,7 @@
               type="text"
               class="form-control"
               name="newName"
-              v-model="newName"
+              v-model="formData.new_name"
             />
           </td>
         </tr>
@@ -49,7 +49,7 @@
             <input
               type="checkbox"
               class="form-check-input"
-              v-model="chkGender"
+              v-model="formData.is_gender"
               name="agree"
               id="agree"
             />
@@ -58,17 +58,25 @@
             <span class=""> ភេទ</span>
           </td>
           <td class="p-1">
-            <select class="form-select form-select-lg" id="inputGroupSelect01">
-              <option selected>ជ្រើសរើសភេទ</option>
-              <option value="1">ប្រុស</option>
-              <option value="2">ស្រី</option>
+            <select
+              class="form-select form-select-lg"
+              id="inputGroupSelect01"
+              v-model="formData.old_gender"
+            >
+              <option selected disabled value="">ជ្រើសរើសភេទ</option>
+              <option value="male">ប្រុស</option>
+              <option value="female">ស្រី</option>
             </select>
           </td>
           <td class="p-1">
-            <select class="form-select form-select-lg" id="inputGroupSelect01">
-              <option selected>ជ្រើសរើសភេទ</option>
-              <option value="1">ប្រុស</option>
-              <option value="2">ស្រី</option>
+            <select
+              class="form-select form-select-lg"
+              id="inputGroupSelect01"
+              v-model="formData.new_gender"
+            >
+              <option selected disabled value="">ជ្រើសរើសភេទ</option>
+              <option value="male">ប្រុស</option>
+              <option value="female">ស្រី</option>
             </select>
           </td>
         </tr>
@@ -79,7 +87,7 @@
             <input
               type="checkbox"
               class="form-check-input"
-              v-model="chkDob"
+              v-model="formData.is_dob"
               name="agree"
               id="agree"
             />
@@ -93,7 +101,7 @@
               class="form-control"
               placeholder="dd-mm-yyyy"
               name="oldDob"
-              v-model="oldDob"
+              v-model="formData.old_dob"
             />
           </td>
           <td class="p-1">
@@ -102,7 +110,7 @@
               placeholder="dd-mm-yyyy"
               class="form-control"
               name="newDob"
-              v-model="newDob"
+              v-model="formData.new_dob"
             />
           </td>
         </tr>
@@ -114,7 +122,7 @@
               class="form-check-input"
               name="agree"
               id="agree"
-              v-model="chkPob"
+              v-model="formData.is_pob"
             />
           </td>
           <td class="p-1" style="white-space: nowrap">
@@ -126,7 +134,7 @@
               type="text"
               class="form-control"
               name="oldDob"
-              v-model="oldPob"
+              v-model="formData.old_pob"
             />
           </td>
           <td class="p-1">
@@ -134,7 +142,7 @@
               type="text"
               class="form-control"
               name="newDob"
-              v-model="newPob"
+              v-model="formData.new_pob"
             />
           </td>
         </tr>
@@ -147,7 +155,7 @@
               class="form-check-input"
               name="agree"
               id="agree"
-              v-model="chkfather"
+              v-model="formData.is_father"
             />
           </td>
           <td class="p-1" style="white-space: nowrap">
@@ -158,7 +166,7 @@
               type="text"
               class="form-control"
               name="oldDob"
-              v-model="oldFather"
+              v-model="formData.old_father"
             />
           </td>
           <td class="p-1">
@@ -166,7 +174,7 @@
               type="text"
               class="form-control"
               name="newDob"
-              v-model="newFather"
+              v-model="formData.new_father"
             />
           </td>
         </tr>
@@ -179,7 +187,7 @@
               class="form-check-input"
               name="agree"
               id="agree"
-              v-model="chkMother"
+              v-model="formData.is_mother"
             />
           </td>
           <td class="p-1" style="white-space: nowrap">
@@ -190,7 +198,7 @@
               type="text"
               class="form-control"
               name="oldDob"
-              v-model="oldMother"
+              v-model="formData.old_mother"
             />
           </td>
           <td class="p-1">
@@ -198,7 +206,7 @@
               type="text"
               class="form-control"
               name="newDob"
-              v-model="newMother"
+              v-model="formData.new_mother"
             />
           </td>
         </tr>
@@ -208,6 +216,52 @@
   </div>
   <!-- </form> -->
 </template>
+
+<script>
+import { useApplicant } from "@/store/applicant";
+import { mapState, mapActions } from "pinia";
+
+export default {
+  data() {
+    return {
+      formData: {
+        is_name: "",
+        old_name: "",
+        new_name: "",
+        is_gender: "",
+        old_gender: "",
+        new_gender: "",
+        is_dob: "",
+        old_dob: "",
+        new_dob: "",
+        is_pob: "",
+        old_pob: "",
+        new_pob: "",
+        is_father: "",
+        old_father: "",
+        new_father: "",
+        is_mother: "",
+        old_mother: "",
+        new_mother: "",
+      },
+    };
+  },
+  mounted() {
+    this.formData = this.editData;
+    //console.log(this.formData);
+  },
+  unmounted() {
+    this.setEdit(this.formData);
+    //console.log(this.editData);
+  },
+  computed: {
+    ...mapState(useApplicant, ["editData"]),
+  },
+  methods: {
+    ...mapActions(useApplicant, ["setEdit"]),
+  },
+};
+</script>
 
 
 <style scoped>

@@ -60,7 +60,7 @@ const routes = [
     component: UserDashboard,
     children: [
       {
-        path: "",
+        path: "/user-dashboard",
         name: "ដាក់ពាក្យស្នើសុំ",
         component: ContainDash,
       },
@@ -76,7 +76,7 @@ const routes = [
       },
       {
         path: "/user-dashboard/profile",
-        name: "គណនេយ្យ",
+        name: "គណនី",
         component: Profile,
       },
       {

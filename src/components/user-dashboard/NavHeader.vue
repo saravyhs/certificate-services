@@ -34,12 +34,6 @@
           class="navbar navbar-header-left navbar-expand-lg navbar-form nav-search p-0 d-none d-lg-flex"
         >
           <div class="text-part">{{ currentRoute }}</div>
-
-          <!-- aria-label="breadcrumb"
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Library</li>
-          </ol> -->
         </nav>
 
         <ul class="navbar-nav topbar-nav ms-md-auto align-items-center">
@@ -52,13 +46,13 @@
             >
               <div class="avatar-sm">
                 <img
-                  src="@/assets/img/profile.jpg"
+                  :src="profileImage"
                   alt="..."
                   class="avatar-img rounded-circle"
                 />
               </div>
               <span class="profile-username">
-                <span class="fw-bold">មាស សារ៉ាវី</span>
+                <span class="fw-bold">{{ username }}</span>
               </span>
             </a>
             <ul class="dropdown-menu dropdown-user animated fadeIn">
@@ -67,14 +61,18 @@
                   <div class="user-box">
                     <div class="avatar-lg">
                       <img
-                        src="@/assets/img/profile.jpg"
-                        alt="image profile"
+                        :src="profileImage"
+                        alt="..."
                         class="avatar-img rounded"
                       />
                     </div>
                     <div class="u-text">
-                      <div>មាស សារ៉ាវី</div>
-                      <p class="text-muted">saravy@example.com</p>
+                      <div>
+                        {{ username }}
+                      </div>
+                      <p class="text-muted">
+                        {{ email }}
+                      </p>
                     </div>
                   </div>
                 </li>
@@ -84,24 +82,27 @@
                     to="/user-dashboard/profile"
                     class="dropdown-item list-one-line"
                   >
-                    <i class="fas fa-user"></i>
+                    <!-- <i class="fas fa-user"></i> -->
+                    <font-awesome-icon icon="fas fa-user"/>
                     <span class="m-1"></span>
-                    <div>គណនេយ្យ</div>
+                    <div>គណនី</div>
                   </router-link>
                   <router-link
                     to="/user-dashboard/profile-setting"
                     class="dropdown-item list-one-line"
                   >
-                    <i class="fas fa-cog"></i>
+                    <!-- <i class="fas fa-cog"></i> -->
+                    <font-awesome-icon icon="fas fa-cog"/>
                     <span class="m-1"></span>
                     <div>ការកំណត់</div>
                   </router-link>
                   <div class="dropdown-divider"></div>
-                  <router-link to="/" class="dropdown-item list-one-line">
-                    <i class="fas fa-sign-out-alt"></i>
+                  <button @click="logout()" class="dropdown-item list-one-line">
+                    <!-- <i class="fas fa-sign-out-alt"></i> -->
+                    <font-awesome-icon icon="fas fa-sign-out-alt"/>
                     <span class="m-1"></span>
                     <div>ចាកចេញ</div>
-                  </router-link>
+                  </button>
                 </li>
               </div>
             </ul>
@@ -114,11 +115,28 @@
 </template>
 
 <script>
+import { useUsersStore } from "@/store/user";
+import { mapState, mapActions } from "pinia";
+
 export default {
+  data() {
+    return {
+      username: "",
+      email: "",
+    };
+  },
   computed: {
     currentRoute() {
       return this.$route.name;
     },
+    ...mapState(useUsersStore, ["user", "profileImage"]),
+  },
+  methods: {
+    ...mapActions(useUsersStore, ["logout"]),
+  },
+  mounted() {
+    this.username = this.user.username;
+    this.email = this.user.email;
   },
 };
 </script>
