@@ -41,7 +41,7 @@
                     v-model="formData.password"
                   />
                   <div class="show-password" @click="switchPassword">
-                    <i class="icon-eye"></i>
+                    <i :class="eyeType"></i>
                   </div>
                 </div>
               </div>
@@ -90,6 +90,7 @@ export default {
     return {
       //users: userData,
       passwordFieldType: "password",
+      eyeType: "fas fa-eye-slash",
       formData: {
         email: "",
         password: "",
@@ -110,8 +111,8 @@ export default {
       );
     },
     switchPassword() {
-      this.passwordFieldType =
-        this.passwordFieldType === "password" ? "text" : "password";
+      this.passwordFieldType = this.passwordFieldType === "password" ? "text" : "password";
+      this.eyeType = this.eyeType === "fas fa-eye-slash" ? "fas fa-eye" : "fas fa-eye-slash";
     },
   },
 };

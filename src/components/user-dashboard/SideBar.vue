@@ -43,7 +43,11 @@
           </li>
           <li
             class="nav-item"
-            :class="{ active: $route.path == '/user-dashboard/list-services' }"
+            :class="{ 
+              active: 
+                $route.path == '/user-dashboard/list-services' ||
+                $route.path == '/user-dashboard/view-service' ||
+                $route.path == '/user-dashboard/edit-service'}"
           >
             <router-link to="/user-dashboard/list-services" class="nav-link">
               <!-- <i class="fas fa-list"></i> -->

@@ -14,15 +14,12 @@ export const useUsersStore = defineStore("user", {
     },
     async updateProfileImage(userId, token) {
       try {
-        const response = await axios.get(
-          `/api/user-profile/${userId}`,
-          {
-            responseType: "blob",
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const response = await axios.get(`api/user-profile/${userId}`, {
+          responseType: "blob",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         this.profileImage = URL.createObjectURL(response.data);
       } catch (error) {
         if (error.response) {
@@ -39,11 +36,10 @@ export const useUsersStore = defineStore("user", {
           this.errorMessage = "An unexpected error occurred.";
         }
       }
-      
     },
     async login(userEmail, userPassword) {
       try {
-        const { data } = await axios.post("/api/auth/login", {
+        const { data } = await axios.post("api/auth/login", {
           email: userEmail,
           password: userPassword,
         });
@@ -72,16 +68,27 @@ export const useUsersStore = defineStore("user", {
         return;
       }
     },
-    async register(firstName, lastName, gender, dob, address, phone, username, email, password, confirmPassword) {
+    async register(
+      firstName,
+      lastName,
+      gender,
+      dob,
+      address,
+      phone,
+      username,
+      email,
+      password,
+      confirmPassword
+    ) {
       try {
-        const { data } = await axios.post("/api/auth/signup", {
+        const { data } = await axios.post("api/auth/signup", {
           firstName: firstName,
           lastName: lastName,
           gender: gender,
           dob: dob,
           address: address,
           phone: phone,
-          username: username,          
+          username: username,
           email: email,
           password: password,
           confirmedPassword: confirmPassword,
@@ -111,8 +118,9 @@ export const useUsersStore = defineStore("user", {
 
     logout() {
       this.user = null;
-      this.profileImage= "https://avatar.iran.liara.run/public/boy?username=Ash", // Default image
-      router.push("/");
+      (this.profileImage =
+        "https://avatar.iran.liara.run/public/boy?username=Ash"), // Default image
+        router.push("/");
     },
   },
   persist: {
