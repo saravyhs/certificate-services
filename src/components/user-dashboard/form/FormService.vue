@@ -1,9 +1,9 @@
 <template>
-  <div class="d-flex justify-content-center">
+  <!-- <div class="d-flex justify-content-center"> -->
     <form>
       <div class="container">
         <div class="row">
-          <div class="col-sm-auto">
+          <div class="col-sm-3">
             <div class="form-check">
               <span class="form-check-label" for="serviceType">ប្រភេទសេវា</span>
             </div>
@@ -21,7 +21,7 @@
               />
               <span class="form-check-label" for="validation">
                 បញ្ជាក់ភាពត្រឹមត្រូវ
-              </span>
+              </span>         
             </div>
           </div>
 
@@ -55,7 +55,7 @@
         </div>
       </div>
     </form>
-  </div>
+  <!-- </div> -->
   <hr class="hr" />
   <div class="container">
     <FormServiceVerify v-if="selectedServiceType === '1'"></FormServiceVerify>
@@ -97,3 +97,7 @@ function handleChangeService(type) {
   setSelectedServiceType(type);
 }
 </script>
+
+<style scoped>
+
+</style>

@@ -72,16 +72,11 @@ export default {
     this.username = this.user.username;
     this.email = this.user.email;
     //=====================loading count ==================
-    const { data } = await axios.get(
-      `/api/form/count/${this.user._id}`,
-      {
-        headers: {
-          Authorization: `Bearer ${
-            this.user.token
-          }`,
-        },
-      }
-    );
+    const { data } = await axios.get(`/api/form/count/${this.user._id}`, {
+      headers: {
+        Authorization: `Bearer ${this.user.token}`,
+      },
+    });
     if (data) {
       const countVerify = data.countByCat.find(
         (element) => element._id == "verify"
@@ -98,7 +93,6 @@ export default {
       this.edit = countEdit != null ? countEdit.count : "0";
       this.reissue = countReissue != null ? countReissue.count : "0";
     }
-    
   },
 };
 </script>

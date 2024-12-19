@@ -5,8 +5,8 @@ import piniaPluginPersistedstate from "pinia-plugin-persistedstate";
 import router from "./route";
 import VueSweetalert2 from "vue-sweetalert2";
 import "sweetalert2/dist/sweetalert2.min.css";
-import Vueform from '@vueform/vueform'
-import vueformConfig from './../vueform.config'
+import PrimeVue from 'primevue/config';
+import Aura from '@primevue/themes/aura';
 /* import the fontawesome core */
 import { library } from '@fortawesome/fontawesome-svg-core'
 /* import font awesome icon component */
@@ -27,6 +27,10 @@ const app = createApp(App);
 app.use(router);
 app.use(pinia);
 app.use(VueSweetalert2, options);
-app.use(Vueform, vueformConfig);
+app.use(PrimeVue, {
+  theme: {
+      preset: Aura
+  }
+});
 app.component('font-awesome-icon', FontAwesomeIcon)
 app.mount("#app");

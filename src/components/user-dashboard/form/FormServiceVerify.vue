@@ -1,11 +1,11 @@
 <template>
   <div class="row">
-    <div class="col-sm-6 text-sm-end">
+    <div class="col-sm-3">
       <div class="form-check">
         <span class="form-check-label">ប្រភេទសញ្ញាបត្រ</span>
       </div>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-9">
       <div class="form-check">
         <input
           class="form-check-input"

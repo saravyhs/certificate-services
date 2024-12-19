@@ -18,8 +18,7 @@
               type="checkbox"
               class="form-check-input"
               v-model="formData.is_name"
-              name="agree"
-              id="chkName"
+               @click="checkName"
             />
           </td>
           <td class="p-1" style="white-space: nowrap">
@@ -31,6 +30,7 @@
               class="form-control"
               name="oldName"
               v-model="formData.old_name"
+              :readonly="!formData.is_name"
             />
           </td>
           <td class="p-1">
@@ -39,6 +39,7 @@
               class="form-control"
               name="newName"
               v-model="formData.new_name"
+              :readonly="!formData.is_name"
             />
           </td>
         </tr>
@@ -50,8 +51,7 @@
               type="checkbox"
               class="form-check-input"
               v-model="formData.is_gender"
-              name="agree"
-              id="agree"
+              @click="checkGender"
             />
           </td>
           <td class="p-1" style="white-space: nowrap">
@@ -62,6 +62,7 @@
               class="form-select form-select-lg"
               id="inputGroupSelect01"
               v-model="formData.old_gender"
+              :disabled="!formData.is_gender"              
             >
               <option selected disabled value="">ជ្រើសរើសភេទ</option>
               <option value="male">ប្រុស</option>
@@ -73,6 +74,7 @@
               class="form-select form-select-lg"
               id="inputGroupSelect01"
               v-model="formData.new_gender"
+              :disabled="!formData.is_gender"
             >
               <option selected disabled value="">ជ្រើសរើសភេទ</option>
               <option value="male">ប្រុស</option>
@@ -88,8 +90,7 @@
               type="checkbox"
               class="form-check-input"
               v-model="formData.is_dob"
-              name="agree"
-              id="agree"
+              @click="checkDob"
             />
           </td>
           <td class="p-1" style="white-space: nowrap">
@@ -102,6 +103,7 @@
               placeholder="dd-mm-yyyy"
               name="oldDob"
               v-model="formData.old_dob"
+              :readonly="!formData.is_dob"
             />
           </td>
           <td class="p-1">
@@ -111,6 +113,7 @@
               class="form-control"
               name="newDob"
               v-model="formData.new_dob"
+              :readonly="!formData.is_dob"
             />
           </td>
         </tr>
@@ -120,9 +123,8 @@
             <input
               type="checkbox"
               class="form-check-input"
-              name="agree"
-              id="agree"
-              v-model="formData.is_pob"
+              v-model="formData.is_pob"  
+              @click="checkPob"            
             />
           </td>
           <td class="p-1" style="white-space: nowrap">
@@ -135,6 +137,7 @@
               class="form-control"
               name="oldDob"
               v-model="formData.old_pob"
+              :readonly="!formData.is_pob"
             />
           </td>
           <td class="p-1">
@@ -143,6 +146,7 @@
               class="form-control"
               name="newDob"
               v-model="formData.new_pob"
+              :readonly="!formData.is_pob"
             />
           </td>
         </tr>
@@ -153,9 +157,8 @@
             <input
               type="checkbox"
               class="form-check-input"
-              name="agree"
-              id="agree"
               v-model="formData.is_father"
+              @click="checkFather"
             />
           </td>
           <td class="p-1" style="white-space: nowrap">
@@ -167,6 +170,7 @@
               class="form-control"
               name="oldDob"
               v-model="formData.old_father"
+              :readonly="!formData.is_father"
             />
           </td>
           <td class="p-1">
@@ -175,6 +179,7 @@
               class="form-control"
               name="newDob"
               v-model="formData.new_father"
+              :readonly="!formData.is_father"
             />
           </td>
         </tr>
@@ -185,9 +190,8 @@
             <input
               type="checkbox"
               class="form-check-input"
-              name="agree"
-              id="agree"
               v-model="formData.is_mother"
+              @click="checkMother"
             />
           </td>
           <td class="p-1" style="white-space: nowrap">
@@ -199,6 +203,7 @@
               class="form-control"
               name="oldDob"
               v-model="formData.old_mother"
+              :readonly="!formData.is_mother"
             />
           </td>
           <td class="p-1">
@@ -207,6 +212,7 @@
               class="form-control"
               name="newDob"
               v-model="formData.new_mother"
+              :readonly="!formData.is_mother"
             />
           </td>
         </tr>
@@ -259,6 +265,31 @@ export default {
   },
   methods: {
     ...mapActions(useApplicant, ["setEdit"]),
+    checkName(){
+      this.formData.old_name = "";
+      this.formData.new_name = "";
+    },
+    checkGender(){
+      this.formData.old_gender = "";
+      this.formData.new_gender = "";
+    },
+    checkDob(){
+      this.formData.old_dob = "";
+      this.formData.new_dob = "";
+    },
+    checkPob(){
+      this.formData.old_pob = "";
+      this.formData.new_pob = "";
+    },
+    checkFather(){
+      this.formData.old_father = "";
+      this.formData.new_father = "";
+    },
+    checkMother(){
+      this.formData.old_mother = "";
+      this.formData.new_mother = "";
+    }
+
   },
 };
 </script>

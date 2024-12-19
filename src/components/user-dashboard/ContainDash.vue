@@ -16,6 +16,7 @@
                 <button
                   class="btn btn-danger btn-rounded me-1"
                   @click="clearForm"
+                  v-if="stepActive == 1 || stepActive == 2"
                 >
                   សម្អាត
                 </button>
@@ -81,6 +82,7 @@ export default {
       "appData",
       "verifyData",
       "editData",
+      "filesAttach",
     ]),
     ...mapState(useUsersStore, ["user"]),
   },
@@ -88,11 +90,39 @@ export default {
     ...mapActions(useActiveStore, ["incrementStep", "decrementStep"]),
     //...mapActions(useApplicant, ["resetState"]),
     clearForm() {
-      //clear data in store
-      //const store = useApplicant();
-      //store.$reset();
+      if(this.stepActive == 1){
+        this.appData.examDate = "";
+        this.appData.examCenter = "";
+        this.appData.room = "";
+        this.appData.seat = "";
+        this.appData.grade = "";
+        this.appData.percentile = "";
+      }
+      if(this.stepActive == 2){
+        this.verifyData.verifyByCertType = "diploma";
+        
+        this.editData.is_name = null;
+        this.editData.old_name = "";
+        this.editData.new_name = "";
+        this.editData.is_gender = null;
+        this.editData.old_gender = "";
+        this.editData.new_gender = "";
+        this.editData.is_dob = null;
+        this.editData.old_dob = "";
+        this.editData.new_dob = "";
+        this.editData.is_pob = null;
+        this.editData.old_pob = "";
+        this.editData.new_pob = "";
+        this.editData.is_father = null;
+        this.editData.old_father = "";
+        this.editData.new_father = "";
+        this.editData.is_mother = null;
+        this.editData.old_mother = "";
+        this.editData.new_mother = "";
+      }   
     },
     async saveApplicant() {
+      //save form data to db===================
       let applicant;
       if (this.appData.service == "verify") {
         applicant = {
@@ -109,7 +139,7 @@ export default {
           ...this.appData,
         };
       }
-      //console.log(applicant);
+      
       const { data } = await axios.post(
         `/api/form/${this.user._id}`,
         applicant,
@@ -121,7 +151,27 @@ export default {
           },
         }
       );
-
+      //save files attach db================== 
+      if(this.filesAttach.length >0){        
+        const formData = new FormData();     
+        // Append each file to the FormData object 
+        this.filesAttach.forEach(file => {
+          formData.append("files", file); 
+        });
+        const response = await axios.post(
+          `/api/file-attach/${this.user._id}/${data._id}`,
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+              Authorization: `Bearer ${
+                this.user.token
+              }`,
+            },
+          }
+        ).catch((error) => console.log(error));
+      }         
+      //show message successfull===============================
       if (data) {
         //clear data in store
         const store = useApplicant();

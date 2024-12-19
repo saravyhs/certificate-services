@@ -237,15 +237,13 @@ export default {
               }`,
             },
           }
-        )
-        .catch((error) => console.log(error));
+        ).catch((error) => console.log(error));
       //save photo to db=======================================
       if (this.photoUpload != "") {
-        let profile = new FormData();
+        const profile = new FormData();
         profile.append("file", this.photoUpload);
 
-        const response = await axios
-          .post(
+        const response = await axios.post(
             `/api/user-profile/${this.user._id}`,
             profile,
             {
@@ -256,8 +254,7 @@ export default {
                 }`,
               },
             }
-          )
-          .catch((error) => console.log(error));
+          ).catch((error) => console.log(error));
           
           if (response){
             await this.updateProfileImage(this.user._id, this.user.token);

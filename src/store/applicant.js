@@ -1,7 +1,4 @@
-// src/store/useApplicantStore.js
 import { defineStore } from "pinia";
-//import axios from "axios";
-//import { applicants } from "database/db";
 
 export const useApplicant = defineStore("applicant", {
   state: () => ({
@@ -36,7 +33,15 @@ export const useApplicant = defineStore("applicant", {
       is_mother: null,
       old_mother: "",
       new_mother: "",
-    },    
+    },
+    filesAttach: [],  
+    //variable for handle form validation
+    errors: {
+      examDate: null,
+      examCenter: null,
+      room: null,
+      seat: null,
+    },
   }),
   actions: {
     setApplicant(appData) {
@@ -50,6 +55,9 @@ export const useApplicant = defineStore("applicant", {
     },
     setEdit(formData) {
       this.editData = formData;
-    },  
+    },
+    setFilesAttach(files){
+      this.filesAttach = files;
+    },
   },
 });
