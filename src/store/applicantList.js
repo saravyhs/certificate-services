@@ -2,6 +2,7 @@
 import { defineStore } from "pinia";
 import { useUsersStore } from "@/store/user";
 import axios from "axios";
+const apiBaseUrl = import.meta.env.VITE_API_URL;
 
 export const useapplicantList = defineStore("applicantList", {
   state: () => ({
@@ -20,14 +21,10 @@ export const useapplicantList = defineStore("applicantList", {
       try {
         const userStore = useUsersStore();
         const { data } = await axios.get(
-          `/api/form/by-user/${
-            userStore.user._id
-          }`,
+          `${apiBaseUrl}/form/by-user/${userStore.user._id}`,
           {
             headers: {
-              Authorization: `Bearer ${
-                userStore.user.token
-              }`,
+              Authorization: `Bearer ${userStore.user.token}`,
             },
           }
         );
@@ -39,16 +36,11 @@ export const useapplicantList = defineStore("applicantList", {
     async getApplicantOne(formId) {
       try {
         const userStore = useUsersStore();
-        const { data } = await axios.get(
-          `/api/form/${formId}`,
-          {
-            headers: {
-              Authorization: `Bearer ${
-                userStore.user.token
-              }`,
-            },
-          }
-        );        
+        const { data } = await axios.get(`${apiBaseUrl}/form/${formId}`, {
+          headers: {
+            Authorization: `Bearer ${userStore.user.token}`,
+          },
+        });
         this.applicantOne = data;
       } catch (error) {
         console.error("Error fetching data:", error);

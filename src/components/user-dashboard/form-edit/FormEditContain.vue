@@ -6,20 +6,26 @@
           <form @submit.prevent="updateForm">
             <h6 class="fw-bold px-0">ព័ត៌មានសញ្ញាបត្រ</h6>
             <hr class="hr mt-0" />
-            <FormEditCertInfor/>
+            <FormEditCertInfor />
             <h6 class="fw-bold px-0">ព័ត៌មានសេវា</h6>
             <hr class="hr mt-0" />
-            <FormEditServiceType/>
-            <FormEditServiceVerify v-if="this.applicantOne.service === 'verify'"/>
-            <FormEditServiceEdit v-else-if="this.applicantOne.service === 'edit'"/>
+            <FormEditServiceType />
+            <FormEditServiceVerify
+              v-if="this.applicantOne.service === 'verify'"
+            />
+            <FormEditServiceEdit
+              v-else-if="this.applicantOne.service === 'edit'"
+            />
             <h6 class="fw-bold px-0">ឯកសារភ្ជាប់</h6>
             <hr class="hr mt-0" />
-            <FormEditDocVerify v-if="this.applicantOne.service === 'verify'"/>
-            <FormEditDocEdit v-else-if="this.applicantOne.service === 'edit'"/>
-            <FormEditDocReissue v-else-if="this.applicantOne.service === 'reissue'"/>
+            <FormEditDocVerify v-if="this.applicantOne.service === 'verify'" />
+            <FormEditDocEdit v-else-if="this.applicantOne.service === 'edit'" />
+            <FormEditDocReissue
+              v-else-if="this.applicantOne.service === 'reissue'"
+            />
             <div class="row pt-2">
               <div class="col-12">
-                <div class="float-end">                
+                <div class="float-end">
                   <router-link
                     to="/user-dashboard/list-services"
                     class="btn btn-danger btn-rounded me-1"
@@ -34,7 +40,7 @@
                   </button>
                 </div>
               </div>
-            </div>    
+            </div>
           </form>
         </div>
       </div>
@@ -43,22 +49,23 @@
 </template>
 
 <script>
-import FormEditCertInfor from './FormEditCertInfor.vue';
-import FormEditDocEdit from './FormEditDocEdit.vue';
-import FormEditDocReissue from './FormEditDocReissue.vue';
-import FormEditDocVerify from './FormEditDocVerify.vue';
-import FormEditServiceEdit from './FormEditServiceEdit.vue';
-import FormEditServiceType from './FormEditServiceType.vue';
-import FormEditServiceVerify from './FormEditServiceVerify.vue';
+import FormEditCertInfor from "./FormEditCertInfor.vue";
+import FormEditDocEdit from "./FormEditDocEdit.vue";
+import FormEditDocReissue from "./FormEditDocReissue.vue";
+import FormEditDocVerify from "./FormEditDocVerify.vue";
+import FormEditServiceEdit from "./FormEditServiceEdit.vue";
+import FormEditServiceType from "./FormEditServiceType.vue";
+import FormEditServiceVerify from "./FormEditServiceVerify.vue";
 import { useapplicantList } from "@/store/applicantList";
 import { useUsersStore } from "@/store/user";
-import { usefileAttach } from "@/store/fileAttach"
-import { mapState} from "pinia";
+import { usefileAttach } from "@/store/fileAttach";
+import { mapState } from "pinia";
 import router from "@/route";
 import axios from "axios";
+const apiBaseUrl = import.meta.env.VITE_API_URL;
 
-export default{
-  components:{
+export default {
+  components: {
     FormEditCertInfor,
     FormEditServiceType,
     FormEditServiceVerify,
@@ -68,23 +75,30 @@ export default{
     FormEditDocReissue,
   },
   computed: {
-    ...mapState(useapplicantList, ["applicantOne","errors"]),
+    ...mapState(useapplicantList, ["applicantOne", "errors"]),
     ...mapState(useUsersStore, ["user"]),
-    ...mapState(usefileAttach, ["files_delete","files_upload"]),
+    ...mapState(usefileAttach, ["files_delete", "files_upload"]),
   },
-  methods:{
-    async updateForm(){
+  methods: {
+    async updateForm() {
       //check form validation
-      if(this.applicantOne.examDate == "" ||
+      if (
+        this.applicantOne.examDate == "" ||
         this.applicantOne.examCenter == "" ||
         this.applicantOne.room == "" ||
         this.applicantOne.seat == ""
-      ){
-        this.errors.examDate = this.applicantOne.examDate == ""? "Exam date is required." : null;
-        this.errors.examCenter = this.applicantOne.examCenter == ""? "Exam center is required." : null;
-        this.errors.room = this.applicantOne.room == ""? "Room is required." : null;
-        this.errors.seat = this.applicantOne.seat == ""? "Seat is required." : null;
-        return
+      ) {
+        this.errors.examDate =
+          this.applicantOne.examDate == "" ? "Exam date is required." : null;
+        this.errors.examCenter =
+          this.applicantOne.examCenter == ""
+            ? "Exam center is required."
+            : null;
+        this.errors.room =
+          this.applicantOne.room == "" ? "Room is required." : null;
+        this.errors.seat =
+          this.applicantOne.seat == "" ? "Seat is required." : null;
+        return;
       }
       const form = {
         examDate: this.applicantOne.examDate,
@@ -93,13 +107,13 @@ export default{
         seat: this.applicantOne.seat,
         grade: this.applicantOne.grade,
         percentile: this.applicantOne.percentile,
-        service: this.applicantOne.service,   
+        service: this.applicantOne.service,
       };
-      if(this.applicantOne.service == "verify"){
+      if (this.applicantOne.service == "verify") {
         form.verify = {
           verifyByCertType: this.applicantOne.verify.verifyByCertType,
-        }
-      }else if (this.applicantOne.service == "edit"){
+        };
+      } else if (this.applicantOne.service == "edit") {
         form.edit = {
           is_name: this.applicantOne.edit.is_name,
           old_name: this.applicantOne.edit.old_name,
@@ -119,55 +133,55 @@ export default{
           is_mother: this.applicantOne.edit.is_mother,
           old_mother: this.applicantOne.edit.old_mother,
           new_mother: this.applicantOne.edit.new_mother,
-        }
+        };
       }
       //update user data to db===========================
-      const { data } = await axios.put(`/api/form/${this.applicantOne._id}`, form,
-          {
-            headers: {
-              Authorization: `Bearer ${
-                this.user.token
-              }`,
-            },
-          }
-      ).catch((error) => console.log(error));
+      const { data } = await axios
+        .put(`${apiBaseUrl}/form/${this.applicantOne._id}`, form, {
+          headers: {
+            Authorization: `Bearer ${this.user.token}`,
+          },
+        })
+        .catch((error) => console.log(error));
       // delete file attach from database and file directory
-      if(this.files_delete.length > 0){
+      if (this.files_delete.length > 0) {
         for (let index = 0; index < this.files_delete.length; index++) {
-          await axios.delete(`/api/file-attach/${this.user._id}/${this.files_delete[index]}`,
+          await axios
+            .delete(
+              `${apiBaseUrl}/file-attach/${this.user._id}/${this.files_delete[index]}`,
               {
                 headers: {
-                  Authorization: `Bearer ${
-                    this.user.token
-                  }`,
+                  Authorization: `Bearer ${this.user.token}`,
                 },
               }
-          ).catch((error) => console.log(error));
+            )
+            .catch((error) => console.log(error));
         }
       }
       // upload new file attach if exist======================
-      if(this.files_upload.length >0){        
-        const formData = new FormData();     
-        // Append each file to the FormData object 
-        this.files_upload.forEach(file => {
-          formData.append("files", file); 
+      if (this.files_upload.length > 0) {
+        const formData = new FormData();
+        // Append each file to the FormData object
+        this.files_upload.forEach((file) => {
+          formData.append("files", file);
         });
-        const response = await axios.post(
-          `/api/file-attach/${this.user._id}/${this.applicantOne._id}`,
-          formData,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-              Authorization: `Bearer ${
-                this.user.token
-              }`,
-            },
-          }
-        ).catch((error) => console.log(error));
-      }   
+        const response = await axios
+          .post(
+            `${apiBaseUrl}/file-attach/${this.user._id}/${this.applicantOne._id}`,
+            formData,
+            {
+              headers: {
+                "Content-Type": "multipart/form-data",
+                Authorization: `Bearer ${this.user.token}`,
+              },
+            }
+          )
+          .catch((error) => console.log(error));
+      }
       //show message successfull===============================
       if (data) {
-        this.$swal.fire({
+        this.$swal
+          .fire({
             title: "កែប្រែព័ត៌មាន",
             text: "ព័ត៌មានត្រូវបានកែប្រែដោយជោគជ័យ!",
             icon: "success",
@@ -180,7 +194,7 @@ export default{
             router.push("/user-dashboard/list-services");
           });
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
