@@ -304,7 +304,7 @@
                       <tr>
                         <td style="width: 130px; border: none">សម័យប្រឡង</td>
                         <td style="font-family: Moul Light; border: none">
-                          {{ this.applicantOne.examDate }}
+                          {{ formatDate(this.applicantOne.examDate) }}
                         </td>
                         <td style="width: 50px; border: none">មណ្ឌលប្រឡង</td>
                         <td
