@@ -16,7 +16,7 @@ export const useUsersStore = defineStore("user", {
     async updateProfileImage(userId, token) {
       try {
         const response = await axios.get(
-          `${apiBaseUrl}/user-profile/${userId}`,
+          `${apiBaseUrl}/api/user-profile/${userId}`,
           {
             responseType: "blob",
             headers: {
@@ -43,7 +43,7 @@ export const useUsersStore = defineStore("user", {
     },
     async login(userEmail, userPassword) {
       try {
-        const { data } = await axios.post(`${apiBaseUrl}/auth/login`, {
+        const { data } = await axios.post(`${apiBaseUrl}/api/auth/login`, {
           email: userEmail,
           password: userPassword,
         });
@@ -85,7 +85,7 @@ export const useUsersStore = defineStore("user", {
       confirmPassword
     ) {
       try {
-        const { data } = await axios.post(`${apiBaseUrl}/auth/signup`, {
+        const { data } = await axios.post(`${apiBaseUrl}/api/auth/signup`, {
           firstName: firstName,
           lastName: lastName,
           gender: gender,
