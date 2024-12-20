@@ -68,6 +68,7 @@ import { useUsersStore } from "@/store/user";
 import { mapActions, mapState } from "pinia";
 import axios from "axios";
 import router from "@/route";
+const apiBaseUrl = import.meta.env.VITE_API_URL;
 
 export default {
   components: {
@@ -90,7 +91,7 @@ export default {
     ...mapActions(useActiveStore, ["incrementStep", "decrementStep"]),
     //...mapActions(useApplicant, ["resetState"]),
     clearForm() {
-      if(this.stepActive == 1){
+      if (this.stepActive == 1) {
         this.appData.examDate = "";
         this.appData.examCenter = "";
         this.appData.room = "";
@@ -98,9 +99,9 @@ export default {
         this.appData.grade = "";
         this.appData.percentile = "";
       }
-      if(this.stepActive == 2){
+      if (this.stepActive == 2) {
         this.verifyData.verifyByCertType = "diploma";
-        
+
         this.editData.is_name = null;
         this.editData.old_name = "";
         this.editData.new_name = "";
@@ -119,7 +120,7 @@ export default {
         this.editData.is_mother = null;
         this.editData.old_mother = "";
         this.editData.new_mother = "";
-      }   
+      }
     },
     async saveApplicant() {
       //save form data to db===================
@@ -139,38 +140,36 @@ export default {
           ...this.appData,
         };
       }
-      
+
       const { data } = await axios.post(
-        `/api/form/${this.user._id}`,
+        `${apiBaseUrl}/form/${this.user._id}`,
         applicant,
         {
           headers: {
-            Authorization: `Bearer ${
-              this.user.token
-            }`,
+            Authorization: `Bearer ${this.user.token}`,
           },
         }
       );
-      //save files attach db================== 
-      if(this.filesAttach.length >0){        
-        const formData = new FormData();     
-        // Append each file to the FormData object 
-        this.filesAttach.forEach(file => {
-          formData.append("files", file); 
+      //save files attach db==================
+      if (this.filesAttach.length > 0) {
+        const formData = new FormData();
+        // Append each file to the FormData object
+        this.filesAttach.forEach((file) => {
+          formData.append("files", file);
         });
-        const response = await axios.post(
-          `/api/file-attach/${this.user._id}/${data._id}`,
-          formData,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-              Authorization: `Bearer ${
-                this.user.token
-              }`,
-            },
-          }
-        ).catch((error) => console.log(error));
-      }         
+        const response = await axios
+          .post(
+            `${apiBaseUrl}/file-attach/${this.user._id}/${data._id}`,
+            formData,
+            {
+              headers: {
+                "Content-Type": "multipart/form-data",
+                Authorization: `Bearer ${this.user.token}`,
+              },
+            }
+          )
+          .catch((error) => console.log(error));
+      }
       //show message successfull===============================
       if (data) {
         //clear data in store
