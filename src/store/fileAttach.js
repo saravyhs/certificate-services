@@ -2,6 +2,7 @@
 import { defineStore } from "pinia";
 import { useUsersStore } from "@/store/user";
 import axios from "axios";
+const apiBaseUrl = import.meta.env.VITE_API_URL;
 
 export const usefileAttach = defineStore("fileAttach", {
   state: () => ({
@@ -10,16 +11,16 @@ export const usefileAttach = defineStore("fileAttach", {
     files_upload: [],
   }),
   actions: {
-    setFileDelete(id){
+    setFileDelete(id) {
       this.files_delete.push(id);
     },
-    removeAllFileDelete(){
+    removeAllFileDelete() {
       this.files_delete = [];
     },
-    setFileUpload(files){
+    setFileUpload(files) {
       this.files_upload = files;
     },
-    removeAllFileUpload(){
+    removeAllFileUpload() {
       this.files_upload = [];
     },
     async getFiles(formId) {
@@ -27,36 +28,32 @@ export const usefileAttach = defineStore("fileAttach", {
         const userStore = useUsersStore();
         //get files information from database
         const { data } = await axios.get(
-          `/api/file-attach/files/${userStore.user._id}/${formId}`,
+          `${apiBaseUrl}/file-attach/files/${userStore.user._id}/${formId}`,
           {
             headers: {
-              Authorization: `Bearer ${
-                userStore.user.token
-              }`,
+              Authorization: `Bearer ${userStore.user.token}`,
             },
           }
         );
         this.files = data;
 
         //get file image from directory in server
-        if(this.files.length > 0){
+        if (this.files.length > 0) {
           for (let index = 0; index < this.files.length; index++) {
             const response = await axios.get(
-              `/api/file-attach/${userStore.user._id}/${this.files[index]._id}`,
+              `${apiBaseUrl}/file-attach/${userStore.user._id}/${this.files[index]._id}`,
               {
                 responseType: "blob",
                 headers: {
-                  Authorization: `Bearer ${
-                    userStore.user.token
-                  }`,
+                  Authorization: `Bearer ${userStore.user.token}`,
                 },
               }
             );
             //add new attachs field to files object
-            if(response.data){
-              this.files[index].attachs = URL.createObjectURL(response.data);  
-            }                      
-          }          
+            if (response.data) {
+              this.files[index].attachs = URL.createObjectURL(response.data);
+            }
+          }
         }
         //console.log(this.files);
       } catch (error) {

@@ -72,7 +72,9 @@
                       </select>
                     </div>
 
-                    <div class="col-sm-2 col-form-label px-2">ថ្ងៃខែឆ្នាំកំណើត</div>
+                    <div class="col-sm-2 col-form-label px-2">
+                      ថ្ងៃខែឆ្នាំកំណើត
+                    </div>
                     <div class="col-sm-4 px-2">
                       <input
                         type="date"
@@ -161,6 +163,7 @@ import { mapState, mapActions } from "pinia";
 import axios from "axios";
 import dayjs from "dayjs";
 import router from "@/route";
+const apiBaseUrl = import.meta.env.VITE_API_URL;
 
 export default {
   data() {
@@ -175,14 +178,14 @@ export default {
       },
       username: "",
       email: "",
-      preview:"",
+      preview: "",
       photoUpload: "",
     };
   },
   mounted() {
     this.formData.firstName = this.user.firstName;
     this.formData.lastName = this.user.lastName;
-    this.formData.gender = this.user.gender;    
+    this.formData.gender = this.user.gender;
     this.formData.dob = this.formatDate(this.user.dob);
     this.formData.address = this.user.address;
     this.formData.phone = this.user.phone;
@@ -223,51 +226,43 @@ export default {
         gender: this.formData.gender,
         dob: this.formData.dob,
         address: this.formData.address,
-        phone: this.formData.phone,        
+        phone: this.formData.phone,
       };
       //save user data to db===========================
       const { data } = await axios
-        .put(
-          `/api/users/${this.user._id}`,
-          user,
-          {
-            headers: {
-              Authorization: `Bearer ${
-                this.user.token
-              }`,
-            },
-          }
-        ).catch((error) => console.log(error));
+        .put(`${apiBaseUrl}/users/${this.user._id}`, user, {
+          headers: {
+            Authorization: `Bearer ${this.user.token}`,
+          },
+        })
+        .catch((error) => console.log(error));
       //save photo to db=======================================
       if (this.photoUpload != "") {
         const profile = new FormData();
         profile.append("file", this.photoUpload);
 
-        const response = await axios.post(
-            `/api/user-profile/${this.user._id}`,
-            profile,
-            {
-              headers: {
-                "Content-Type": "multipart/form-data",
-                Authorization: `Bearer ${
-                  this.user.token
-                }`,
-              },
-            }
-          ).catch((error) => console.log(error));
-          
-          if (response){
-            await this.updateProfileImage(this.user._id, this.user.token);
-          }
+        const response = await axios
+          .post(`${apiBaseUrl}/user-profile/${this.user._id}`, profile, {
+            headers: {
+              "Content-Type": "multipart/form-data",
+              Authorization: `Bearer ${this.user.token}`,
+            },
+          })
+          .catch((error) => console.log(error));
+
+        if (response) {
+          await this.updateProfileImage(this.user._id, this.user.token);
+        }
       }
       //show message successfull===============================
       if (data) {
         //seve user data to local storage
-        const {token} = this.user;
+        const { token } = this.user;
         data.token = token;
         this.setUser(data);
         //pop up message susscessfull
-        this.$swal.fire({
+        this.$swal
+          .fire({
             title: "កែប្រែព័ត៌មាន",
             text: "ព័ត៌មានត្រូវបានកែប្រែដោយជោគជ័យ!",
             icon: "success",

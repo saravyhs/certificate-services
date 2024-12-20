@@ -40,6 +40,7 @@
 <script>
 import axios from "axios";
 import { ref, onMounted } from "vue";
+const apiBaseUrl = import.meta.env.VITE_API_URL;
 
 export default {
   props: {
@@ -53,7 +54,7 @@ export default {
     const getStatus = ref(null);
 
     onMounted(async () => {
-      const { data } = await axios.get(`/api/qr-scan/${id}`);
+      const { data } = await axios.get(`${apiBaseUrl}/qr-scan/${id}`);
       getStatus.value = data.status;
     });
 

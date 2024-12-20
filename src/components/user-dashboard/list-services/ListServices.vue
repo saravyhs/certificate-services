@@ -117,6 +117,7 @@ import { mapState, mapActions } from "pinia";
 import router from "@/route";
 import dayjs from "dayjs";
 import axios from "axios";
+const apiBaseUrl = import.meta.env.VITE_API_URL;
 
 export default {
   data() {
@@ -152,7 +153,7 @@ export default {
 
       if (result.isConfirmed) {
         try {
-          const { data } = await axios.delete(`/api/form/${formId}`, {
+          const { data } = await axios.delete(`${apiBaseUrl}/form/${formId}`, {
             headers: {
               Authorization: `Bearer ${this.user.token}`,
             },
