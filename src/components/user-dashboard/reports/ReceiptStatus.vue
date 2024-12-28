@@ -54,7 +54,7 @@ export default {
     const getStatus = ref(null);
 
     onMounted(async () => {
-      const { data } = await axios.get(`/api/qr-scan/${id}`);
+      const { data } = await axios.get(`/qr-scan/${id}`);
       getStatus.value = data.status;
     });
 

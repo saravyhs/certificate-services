@@ -141,15 +141,11 @@ export default {
         };
       }
 
-      const { data } = await axios.post(
-        `/api/form/${this.user._id}`,
-        applicant,
-        {
-          headers: {
-            Authorization: `Bearer ${this.user.token}`,
-          },
-        }
-      );
+      const { data } = await axios.post(`/form/${this.user._id}`, applicant, {
+        headers: {
+          Authorization: `Bearer ${this.user.token}`,
+        },
+      });
       //save files attach db==================
       if (this.filesAttach.length > 0) {
         const formData = new FormData();
@@ -158,7 +154,7 @@ export default {
           formData.append("files", file);
         });
         const response = await axios
-          .post(`/api/file-attach/${this.user._id}/${data._id}`, formData, {
+          .post(`/file-attach/${this.user._id}/${data._id}`, formData, {
             headers: {
               "Content-Type": "multipart/form-data",
               Authorization: `Bearer ${this.user.token}`,

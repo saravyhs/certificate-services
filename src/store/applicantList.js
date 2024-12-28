@@ -21,7 +21,7 @@ export const useapplicantList = defineStore("applicantList", {
       try {
         const userStore = useUsersStore();
         const { data } = await axios.get(
-          `/api/form/by-user/${userStore.user._id}`,
+          `/form/by-user/${userStore.user._id}`,
           {
             headers: {
               Authorization: `Bearer ${userStore.user.token}`,
@@ -36,7 +36,7 @@ export const useapplicantList = defineStore("applicantList", {
     async getApplicantOne(formId) {
       try {
         const userStore = useUsersStore();
-        const { data } = await axios.get(`/api/form/${formId}`, {
+        const { data } = await axios.get(`/form/${formId}`, {
           headers: {
             Authorization: `Bearer ${userStore.user.token}`,
           },

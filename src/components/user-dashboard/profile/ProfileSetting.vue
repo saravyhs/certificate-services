@@ -230,7 +230,7 @@ export default {
       };
       //save user data to db===========================
       const { data } = await axios
-        .put(`/api/users/${this.user._id}`, user, {
+        .put(`/users/${this.user._id}`, user, {
           headers: {
             Authorization: `Bearer ${this.user.token}`,
           },
@@ -242,7 +242,7 @@ export default {
         profile.append("file", this.photoUpload);
 
         const response = await axios
-          .post(`/api/user-profile/${this.user._id}`, profile, {
+          .post(`/user-profile/${this.user._id}`, profile, {
             headers: {
               "Content-Type": "multipart/form-data",
               Authorization: `Bearer ${this.user.token}`,

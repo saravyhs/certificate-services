@@ -28,7 +28,7 @@ export const usefileAttach = defineStore("fileAttach", {
         const userStore = useUsersStore();
         //get files information from database
         const { data } = await axios.get(
-          `/api/file-attach/files/${userStore.user._id}/${formId}`,
+          `/file-attach/files/${userStore.user._id}/${formId}`,
           {
             headers: {
               Authorization: `Bearer ${userStore.user.token}`,
@@ -41,7 +41,7 @@ export const usefileAttach = defineStore("fileAttach", {
         if (this.files.length > 0) {
           for (let index = 0; index < this.files.length; index++) {
             const response = await axios.get(
-              `/api/file-attach/${userStore.user._id}/${this.files[index]._id}`,
+              `/file-attach/${userStore.user._id}/${this.files[index]._id}`,
               {
                 responseType: "blob",
                 headers: {

@@ -73,7 +73,7 @@ export default {
     this.username = this.user.username;
     this.email = this.user.email;
     //=====================loading count ==================
-    const { data } = await axios.get(`/api/form/count/${this.user._id}`, {
+    const { data } = await axios.get(`/form/count/${this.user._id}`, {
       headers: {
         Authorization: `Bearer ${this.user.token}`,
       },

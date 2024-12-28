@@ -153,7 +153,7 @@ export default {
 
       if (result.isConfirmed) {
         try {
-          const { data } = await axios.delete(`/api/form/${formId}`, {
+          const { data } = await axios.delete(`/form/${formId}`, {
             headers: {
               Authorization: `Bearer ${this.user.token}`,
             },

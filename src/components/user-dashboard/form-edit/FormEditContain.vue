@@ -137,7 +137,7 @@ export default {
       }
       //update user data to db===========================
       const { data } = await axios
-        .put(`/api/form/${this.applicantOne._id}`, form, {
+        .put(`/form/${this.applicantOne._id}`, form, {
           headers: {
             Authorization: `Bearer ${this.user.token}`,
           },
@@ -148,7 +148,7 @@ export default {
         for (let index = 0; index < this.files_delete.length; index++) {
           await axios
             .delete(
-              `/api/file-attach/${this.user._id}/${this.files_delete[index]}`,
+              `/file-attach/${this.user._id}/${this.files_delete[index]}`,
               {
                 headers: {
                   Authorization: `Bearer ${this.user.token}`,
@@ -167,7 +167,7 @@ export default {
         });
         const response = await axios
           .post(
-            `/api/file-attach/${this.user._id}/${this.applicantOne._id}`,
+            `/file-attach/${this.user._id}/${this.applicantOne._id}`,
             formData,
             {
               headers: {
