@@ -2,7 +2,7 @@
 import { defineStore } from "pinia";
 import { useUsersStore } from "@/store/user";
 import axios from "axios";
-const apiBaseUrl = import.meta.env.VITE_API_URL;
+//const apiBaseUrl = import.meta.env.VITE_API_URL;
 
 export const usefileAttach = defineStore("fileAttach", {
   state: () => ({
@@ -28,7 +28,7 @@ export const usefileAttach = defineStore("fileAttach", {
         const userStore = useUsersStore();
         //get files information from database
         const { data } = await axios.get(
-          `${apiBaseUrl}/file-attach/files/${userStore.user._id}/${formId}`,
+          `/api/file-attach/files/${userStore.user._id}/${formId}`,
           {
             headers: {
               Authorization: `Bearer ${userStore.user.token}`,
@@ -41,7 +41,7 @@ export const usefileAttach = defineStore("fileAttach", {
         if (this.files.length > 0) {
           for (let index = 0; index < this.files.length; index++) {
             const response = await axios.get(
-              `${apiBaseUrl}/file-attach/${userStore.user._id}/${this.files[index]._id}`,
+              `/api/file-attach/${userStore.user._id}/${this.files[index]._id}`,
               {
                 responseType: "blob",
                 headers: {

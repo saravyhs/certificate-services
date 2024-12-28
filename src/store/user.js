@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 import axios from "axios";
 import router from "@/route";
 import swal from "sweetalert2";
-const apiBaseUrl = import.meta.env.VITE_API_URL;
+//const apiBaseUrl = import.meta.env.VITE_API_URL;
 
 export const useUsersStore = defineStore("user", {
   state: () => ({
@@ -15,15 +15,12 @@ export const useUsersStore = defineStore("user", {
     },
     async updateProfileImage(userId, token) {
       try {
-        const response = await axios.get(
-          `${apiBaseUrl}/user-profile/${userId}`,
-          {
-            responseType: "blob",
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const response = await axios.get(`/api/user-profile/${userId}`, {
+          responseType: "blob",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         this.profileImage = URL.createObjectURL(response.data);
       } catch (error) {
         if (error.response) {
@@ -43,7 +40,7 @@ export const useUsersStore = defineStore("user", {
     },
     async login(userEmail, userPassword) {
       try {
-        const { data } = await axios.post(`${apiBaseUrl}/auth/login`, {
+        const { data } = await axios.post("/api/auth/login", {
           email: userEmail,
           password: userPassword,
         });
@@ -85,7 +82,7 @@ export const useUsersStore = defineStore("user", {
       confirmPassword
     ) {
       try {
-        const { data } = await axios.post(`${apiBaseUrl}/auth/signup`, {
+        const { data } = await axios.post(`/api/auth/signup`, {
           firstName: firstName,
           lastName: lastName,
           gender: gender,

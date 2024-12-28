@@ -32,10 +32,11 @@ export default {
     NavHeader,
   },
   mounted() {
+    import("@/assets/js/kaiadmin.min.js");
     // Create script element for kaiadmin.min.js
-    const script = document.createElement("script");
-    script.src = "../src/assets/js/kaiadmin.min.js"; // Adjust path if necessary
-    document.body.appendChild(script);
+    //const script = document.createElement("script");
+    //script.src = "../src/assets/js/kaiadmin.min.js"; // Adjust path if necessary
+    //document.body.appendChild(script);
   },
 };
 </script>

@@ -62,7 +62,7 @@ import { usefileAttach } from "@/store/fileAttach";
 import { mapState } from "pinia";
 import router from "@/route";
 import axios from "axios";
-const apiBaseUrl = import.meta.env.VITE_API_URL;
+//const apiBaseUrl = import.meta.env.VITE_API_URL;
 
 export default {
   components: {
@@ -137,7 +137,7 @@ export default {
       }
       //update user data to db===========================
       const { data } = await axios
-        .put(`${apiBaseUrl}/form/${this.applicantOne._id}`, form, {
+        .put(`/api/form/${this.applicantOne._id}`, form, {
           headers: {
             Authorization: `Bearer ${this.user.token}`,
           },
@@ -148,7 +148,7 @@ export default {
         for (let index = 0; index < this.files_delete.length; index++) {
           await axios
             .delete(
-              `${apiBaseUrl}/file-attach/${this.user._id}/${this.files_delete[index]}`,
+              `/api/file-attach/${this.user._id}/${this.files_delete[index]}`,
               {
                 headers: {
                   Authorization: `Bearer ${this.user.token}`,
@@ -167,7 +167,7 @@ export default {
         });
         const response = await axios
           .post(
-            `${apiBaseUrl}/file-attach/${this.user._id}/${this.applicantOne._id}`,
+            `/api/file-attach/${this.user._id}/${this.applicantOne._id}`,
             formData,
             {
               headers: {

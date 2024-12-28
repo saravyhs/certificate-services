@@ -163,7 +163,7 @@ import { mapState, mapActions } from "pinia";
 import axios from "axios";
 import dayjs from "dayjs";
 import router from "@/route";
-const apiBaseUrl = import.meta.env.VITE_API_URL;
+//const apiBaseUrl = import.meta.env.VITE_API_URL;
 
 export default {
   data() {
@@ -230,7 +230,7 @@ export default {
       };
       //save user data to db===========================
       const { data } = await axios
-        .put(`${apiBaseUrl}/users/${this.user._id}`, user, {
+        .put(`/api/users/${this.user._id}`, user, {
           headers: {
             Authorization: `Bearer ${this.user.token}`,
           },
@@ -242,7 +242,7 @@ export default {
         profile.append("file", this.photoUpload);
 
         const response = await axios
-          .post(`${apiBaseUrl}/user-profile/${this.user._id}`, profile, {
+          .post(`/api/user-profile/${this.user._id}`, profile, {
             headers: {
               "Content-Type": "multipart/form-data",
               Authorization: `Bearer ${this.user.token}`,

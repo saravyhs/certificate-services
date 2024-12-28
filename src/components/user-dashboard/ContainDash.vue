@@ -68,7 +68,7 @@ import { useUsersStore } from "@/store/user";
 import { mapActions, mapState } from "pinia";
 import axios from "axios";
 import router from "@/route";
-const apiBaseUrl = import.meta.env.VITE_API_URL;
+//const apiBaseUrl = import.meta.env.VITE_API_URL;
 
 export default {
   components: {
@@ -142,7 +142,7 @@ export default {
       }
 
       const { data } = await axios.post(
-        `${apiBaseUrl}/form/${this.user._id}`,
+        `/api/form/${this.user._id}`,
         applicant,
         {
           headers: {
@@ -158,16 +158,12 @@ export default {
           formData.append("files", file);
         });
         const response = await axios
-          .post(
-            `${apiBaseUrl}/file-attach/${this.user._id}/${data._id}`,
-            formData,
-            {
-              headers: {
-                "Content-Type": "multipart/form-data",
-                Authorization: `Bearer ${this.user.token}`,
-              },
-            }
-          )
+          .post(`/api/file-attach/${this.user._id}/${data._id}`, formData, {
+            headers: {
+              "Content-Type": "multipart/form-data",
+              Authorization: `Bearer ${this.user.token}`,
+            },
+          })
           .catch((error) => console.log(error));
       }
       //show message successfull===============================

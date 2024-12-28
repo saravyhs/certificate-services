@@ -1,20 +1,25 @@
 import { createApp } from "vue";
 import App from "./App.vue";
+//=======================================
+import "./assets/css/kaiadmin.css";
+import "./assets/js/kaiadmin.js";
+import "./assets/js/kaiadmin.min.js";
+//=======================================
 import { createPinia } from "pinia";
 import piniaPluginPersistedstate from "pinia-plugin-persistedstate";
 import router from "./route";
 import VueSweetalert2 from "vue-sweetalert2";
 import "sweetalert2/dist/sweetalert2.min.css";
-import PrimeVue from 'primevue/config';
-import Aura from '@primevue/themes/aura';
+import PrimeVue from "primevue/config";
+import Aura from "@primevue/themes/aura";
 /* import the fontawesome core */
-import { library } from '@fortawesome/fontawesome-svg-core'
+import { library } from "@fortawesome/fontawesome-svg-core";
 /* import font awesome icon component */
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 /* import specific icons */
-import { fas, faUserSecret } from '@fortawesome/free-solid-svg-icons'
+import { fas, faUserSecret } from "@fortawesome/free-solid-svg-icons";
 /* add icons to the library */
-library.add(fas,faUserSecret)
+library.add(fas, faUserSecret);
 
 const options = {
   confirmButtonColor: "#41b882",
@@ -29,8 +34,8 @@ app.use(pinia);
 app.use(VueSweetalert2, options);
 app.use(PrimeVue, {
   theme: {
-      preset: Aura
-  }
+    preset: Aura,
+  },
 });
-app.component('font-awesome-icon', FontAwesomeIcon)
+app.component("font-awesome-icon", FontAwesomeIcon);
 app.mount("#app");
