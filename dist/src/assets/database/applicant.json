@@ -1,0 +1,65 @@
+[
+    {
+      "id": 1,
+      "userid": 1,
+      "name": "សុក សៅ",
+      "gender": "female",
+      "dob": "12/12/1990",
+      "fatherName":"សាន សារ៉ាត",
+      "motherName":"មាស សុខី",
+      "address": "ភ្នំពេញ",
+      "examdate": "10/07/2010",
+      "examcenter": "វិ.ទួលស្វាយព្រៃ",
+      "room": "13",
+      "seat": "102",
+      "gread": "B",
+      "phone": "011458976"
+    },
+    {
+      "id": 2,
+      "userid": 1,
+      "name": "សេក វាសនា",
+      "gender": "male",
+      "dob": "08/07/1993",
+      "fatherName":"សេក សារ៉ាត",
+      "motherName":"មាន សុខា",
+      "address": "ភ្នំពេញ",
+      "examdate": "10/07/2012",
+      "examcenter": "វិ.ទួលទំពូង",
+      "room": "24",
+      "seat": "204",
+      "gread": "C",
+      "phone": "012456963"
+    },
+    {
+      "id": 3,
+      "userid": 3,
+      "name": "វ៉ា សាវែល",
+      "gender": "male",
+      "dob": "12/12/1990",
+      "fatherName":"វ៉ា ណូអែល",
+      "motherName":"មាស សោភា",
+      "address": "ភ្នំពេញ",
+      "examdate": "10/07/2010",
+      "examcenter": "វិ.ទួលស្វាយព្រៃ",
+      "room": "13",
+      "seat": "102",
+      "gread": "B",
+      "phone": "011458976"
+    },
+    {
+      "id": 4,
+      "userid": 3,
+      "name": "ស៊ូ សាន់ណារ៉េត",
+      "gender": "male",
+      "dob": "09/11/1993",
+      "address": "ស្វាយរៀង",
+      "examdate": "10/07/2018",
+      "examcenter": "វិ.ស្វាយរៀង",
+      "room": "23",
+      "seat": "104",
+      "gread": "D",
+      "phone": "017125698"
+    }
+  ]
+  
