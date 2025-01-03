@@ -395,7 +395,7 @@ export default {
     QrcodeVue,
   },
   mounted() {
-    this.value = appUrl + "/qr-scan/" + this.applicantOne._id;
+    this.value = appUrl + "/qr-code/" + this.applicantOne._id;
   },
   computed: {
     ...mapState(useapplicantList, ["applicantOne"]),
