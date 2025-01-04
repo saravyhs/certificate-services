@@ -1,9 +1,9 @@
 <template>
-  <div class="d-flex justify-content-center">
+  <!-- <div class="d-flex justify-content-center"> -->
     <form>
       <div class="container">
         <div class="row">
-          <div class="col-sm-auto">
+          <div class="col-sm-3">
             <div class="form-check">
               <span class="form-check-label" for="serviceType">ប្រភេទសេវា</span>
             </div>
@@ -21,7 +21,7 @@
               />
               <span class="form-check-label" for="validation">
                 បញ្ជាក់ភាពត្រឹមត្រូវ
-              </span>
+              </span>         
             </div>
           </div>
 
@@ -55,7 +55,7 @@
         </div>
       </div>
     </form>
-  </div>
+  <!-- </div> -->
   <hr class="hr" />
   <div class="container">
     <FormServiceVerify v-if="selectedServiceType === '1'"></FormServiceVerify>
@@ -65,21 +65,39 @@
 </template>
 
 <script setup>
-import { onMounted } from "vue";
+import { onMounted, onUnmounted} from "vue";
 import FormServiceVerify from "./FormServiceVerify.vue";
 import FormServiceEdit from "./FormServiceEdit.vue";
-import { useServiceStore } from "../../../store/serviceStore";
+import { useServiceStore } from "@/store/serviceStore";
+import { useApplicant } from "@/store/applicant";
 import { storeToRefs } from "pinia";
 const serviceStore = useServiceStore();
+const applicant = useApplicant();
 
 // Use storeToRefs to destructure reactive state properties
 const { selectedServiceType } = storeToRefs(serviceStore);
+const { appData } = storeToRefs(applicant);
 
 // If you need to use actions, destructure them directly from the store
 const { setSelectedServiceType } = serviceStore;
+const { setService } = applicant;
 
+onUnmounted(() => {
+  const service =
+    selectedServiceType.value === "1"
+      ? "verify"
+      : selectedServiceType.value === "2"
+      ? "edit"
+      : "reissue";
+  setService(service);
+  //console.log(appData.value);
+});
 // Function to handle service change
 function handleChangeService(type) {
   setSelectedServiceType(type);
 }
 </script>
+
+<style scoped>
+
+</style>

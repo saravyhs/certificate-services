@@ -1,0 +1,35 @@
+9-action print
+    បើអាចរកវិធីអោយ report នៅកណ្តាល form
+    ១step progress on scan qr-code
+
+==========backend============
+-ធ្វើ fixture.js ដើម្បីបង្កើត some admin and front office user
+-ធ្វើ Route សម្រាប់ front office user អាច edit status
+
+
+
+=======================edit data in mongodb in server=================
+Step 1: Access MongoDB Database
+Option 1: Using mongosh Inside the Docker Container
+Log in to the Remote Server: Use SSH to connect to the remote server:
+
+bash
+Copy code
+ssh user@remote-server-ip
+Access the MongoDB Container:
+
+bash
+Copy code
+docker exec -it mongodb-container mongosh --username admin --password yourpassword
+Replace mongodb-container with the name of your MongoDB container and provide the correct credentials.
+
+Edit Data: Once inside the mongosh shell, select the database and edit data. For example:
+
+javascript
+Copy code
+use myDatabase; // Select the database
+db.myCollection.updateOne({ key: "value" }, { $set: { key: "newValue" } }); // Update data
+
+ 
+
+

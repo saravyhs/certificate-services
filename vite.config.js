@@ -1,17 +1,22 @@
-import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
-//import { resolve } from 'path';
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
+//const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 export default defineConfig({
   plugins: [vue()],
-  //root: path.resolve(__dirname, 'src'),
   resolve: {
     alias: {
-      '@': '/src',
-      //'~coreui': resolve(__dirname, 'node_modules/@coreui/coreui'),
+      "@": "/src",
     },
   },
   server: {
-    port: 8080,
+    proxy: {
+      "/api": {
+        target: "https://localhost:4000/",
+        //changeOrigin: true,
+        secure: false,
+        rewrite: (path) => path.replace(/^\/api/, ""),
+      },
+    },
   },
 });

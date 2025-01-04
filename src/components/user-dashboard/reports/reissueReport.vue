@@ -21,7 +21,7 @@
                     ********
                   </h1>
                   <h3 style="font-size: 11pt">
-                    ពាក្យសុំកែតម្រូវវិញ្ញាបនបត្របណ្ដោះអាសន្នមធ្យមសិក្សាទុតិយភូមិ
+                    ពាក្យសុំវិញ្ញាបនបត្របណ្ដោះអាសន្នមធ្យមសិក្សាទុតិយភូមិ
                   </h3>
                 </div>
                 <div class="table-container">
@@ -66,7 +66,7 @@
                         </td>
                       </tr>
                       <tr>
-                        <td style="border: none">កើតនៅរាជធានី-ខេត្ត</td>
+                        <td style="border: none">អាសយដ្ឋានបច្បន្ន៖</td>
                         <td
                           style="
                             text-align: center;
@@ -77,117 +77,78 @@
                           {{ this.applicantOne.byUser.address }}
                         </td>
                       </tr>
-                    </table>
-                    <!-- ======================================================== -->
-                    <table>
-                      <thead>
-                        <th>លរ</th>
-                        <th>ព័ត៌មាន</th>
-                        <th>ក្នុងវិញ្ញាបត្រចាស់</th>
-                        <th>ក្នុងវិញ្ញាបត្រថ្មី សុំកែតម្រូវ</th>
-                      </thead>
-                      <tbody>
-                        <tr style="outline: thin solid">
-                          <td>1</td>
-                          <td style="outline: thin solid">ឈ្មោះសិស្ស</td>
-                          <td style="outline: thin solid">
-                            {{ this.applicantOne.edit.old_name }}
-                          </td>
-                          <td style="outline: thin solid">
-                            {{ this.applicantOne.edit.new_name }}
-                          </td>
-                        </tr>
-                        <tr>
-                          <td style="outline: thin solid">2</td>
-                          <td style="outline: thin solid">ភេទ</td>
-                          <td style="outline: thin solid">
-                            {{ this.applicantOne.edit.old_gender }}
-                          </td>
-                          <td style="outline: thin solid">
-                            {{ this.applicantOne.edit.new_gender }}
-                          </td>
-                        </tr>
-                        <tr style="outline: thin solid">
-                          <td style="outline: thin solid">3</td>
-                          <td style="outline: thin solid">ថ្ងៃខែឆ្នាំកំណើត</td>
-                          <td style="outline: thin solid">
-                            {{ formatDate(this.applicantOne.edit.old_dob) }}
-                          </td>
-                          <td style="outline: thin solid">
-                            {{ formatDate(this.applicantOne.edit.new_dob) }}
-                          </td>
-                        </tr>
-                        <tr style="outline: thin solid">
-                          <td style="outline: thin solid">4</td>
-                          <td style="outline: thin solid">ទីកន្លែងកំណើត</td>
-                          <td style="outline: thin solid">
-                            {{ this.applicantOne.edit.old_pob }}
-                          </td>
-                          <td style="outline: thin solid">
-                            {{ this.applicantOne.edit.new_pob }}
-                          </td>
-                        </tr>
-                        <tr style="outline: thin solid">
-                          <td style="outline: thin solid">5</td>
-                          <td style="outline: thin solid">ឈ្មោះឧពុក</td>
-                          <td style="outline: thin solid">
-                            {{ this.applicantOne.edit.old_father }}
-                          </td>
-                          <td style="outline: thin solid">
-                            {{ this.applicantOne.edit.new_father }}
-                          </td>
-                        </tr>
-                        <tr style="outline: thin solid">
-                          <td style="outline: thin solid">5</td>
-                          <td style="outline: thin solid">ឈ្មោះម្ដាយ</td>
-                          <td style="outline: thin solid">
-                            {{ this.applicantOne.edit.old_mother }}
-                          </td>
-                          <td style="outline: thin solid">
-                            {{ this.applicantOne.edit.new_mother }}
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <table>
                       <tr>
-                        <td>
-                          សម័យប្រឡង៖ &nbsp;&nbsp;&nbsp;
+                        <td style="width: 100px; border: none">សម័យប្រឡង</td>
+                        <td
+                          style="
+                            text-align: center;
+                            width: 250px;
+                            font-family: Moul Light;
+                            border: none;
+                          "
+                        >
                           {{ formatDate(this.applicantOne.examDate) }}
                         </td>
-                        <td>
-                          មណ្ឌលប្រឡង៖ &nbsp;&nbsp;&nbsp;
+                        <td style="width: 120px; border: none">មណ្ឌលប្រឡង</td>
+                        <td
+                          colspan="4"
+                          style="
+                            font-family: Moul Light;
+                            padding-left: 20px;
+                            border: none;
+                          "
+                        >
                           {{ this.applicantOne.examCenter }}
                         </td>
                       </tr>
+                    </table>
+                    <table>
                       <tr>
-                        <td>
-                          បន្ទប់លេខ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <td style="width: 70px; border: none">បន្ទប់លេខ</td>
+                        <td
+                          style="
+                            text-align: center;
+
+                            font-family: Moul Light;
+                            border: none;
+                          "
+                        >
                           {{ this.applicantOne.room }}
-                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                          បន្ទប់លេខ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                          {{ this.applicantOne.seat }}
-                          &nbsp;&nbsp;&nbsp;&nbsp;
                         </td>
-                        <td>
-                          និន្ទេស&nbsp;&nbsp;&nbsp;&nbsp;
+
+                        <td
+                          style="width: 93px; text-align: center; border: none"
+                        >
+                          លេខតុ
+                        </td>
+                        <td style="font-family: Moul Light; border: none">
+                          {{ this.applicantOne.seat }}
+                        </td>
+                        <td style="width: 75px; border: none">និន្ទេស</td>
+                        <td
+                          style="
+                            width: 300px;
+                            font-family: Moul Light;
+                            border: none;
+                          "
+                        >
                           {{ this.applicantOne.grade }}
                         </td>
                       </tr>
                     </table>
                     <table>
                       <tr>
-                        <td style="width: 200px; border: none"></td>
+                        <td style="width: 80px; border: none"></td>
                         <td style="text-align: end; border: none">
                           សូមភ្ជាប់មកជាមួយនូវ៖
                         </td>
-                        <td style="border: none">
+                        <td style="width: 250px; border: none">
                           &nbsp;-&nbsp;ច្បាប់ថតចម្លងបឋមភូមិ
                         </td>
                         <td style="border: none">១ ច្បាប់</td>
                       </tr>
                       <tr>
-                        <td style="width: 200px; border: none"></td>
+                        <td style="width: 80px; border: none"></td>
                         <td style="text-align: end; border: none"></td>
                         <td style="border: none">
                           &nbsp;-&nbsp;ច្បាប់ថតចម្លងសំបុត្រកំណើត
@@ -195,13 +156,13 @@
                         <td style="border: none">១ ច្បាប់</td>
                       </tr>
                       <tr>
-                        <td style="width: 200px; border: none"></td>
+                        <td style="width: 80px; border: none"></td>
                         <td style="border: none"></td>
                         <td style="border: none">&nbsp;-&nbsp;ពាក្យបណ្ដឹង</td>
                         <td style="border: none">១ ច្បាប់</td>
                       </tr>
                       <tr>
-                        <td style="width: 200px; border: none"></td>
+                        <td style="width: 80px; border: none"></td>
                         <td style="border: none"></td>
                         <td style="border: none">
                           &nbsp;-&nbsp;ច្បាប់ថតចម្លងទុតិយភូមិ
@@ -209,17 +170,17 @@
                         <td style="border: none">១ ច្បាប់</td>
                       </tr>
                       <tr>
-                        <td style="width: 200px; border: none"></td>
+                        <td style="width: 80px; border: none"></td>
                         <td style="border: none"></td>
                         <td
                           colspan="2"
                           style="text-align: center; border: none"
                         >
-                          រាជធានីភ្នំពេញ,ថ្ងៃទី..........ខែ..........ឆ្នាំ........
+                          រាជធានីភ្នំពេញ,ថ្ងៃទី.........ខែ.........ឆ្នាំ...........
                         </td>
                       </tr>
                       <tr>
-                        <td style="width: 200px; border: none"></td>
+                        <td style="width: 80px; border: none"></td>
                         <td style="border: none"></td>
                         <td
                           colspan="2"
@@ -234,7 +195,7 @@
                       </tr>
                     </table>
                   </div>
-                  <div class="p-2"></div>
+                  <div class="p-4"></div>
                   <div class="underline"></div>
                   <!-- បង្កាន់ដៃ -->
                   <div>
@@ -244,7 +205,7 @@
                     }}
                   </div>
                   <div style="font-family: Moul Light" class="header">
-                    បង្កាន់ដៃសុំកែតម្រូវ
+                    បង្កាន់ដៃទុតិយតា
                   </div>
                   <div class="table">
                     <table>
@@ -279,7 +240,6 @@
                             v-if="this.applicantOne.byUser.gender === 'female'"
                             >ស្រី</span
                           >
-                          <span v-else>ប្រុស</span>
                         </td>
                         <td style="border: none">
                           កើតនៅថ្ងៃទី&nbsp;
@@ -287,7 +247,7 @@
                         </td>
                       </tr>
                       <tr>
-                        <td style="border: none">កើតនៅរាជធានី-ខេត្ត</td>
+                        <td style="border: none">អាសយដ្ឋានបច្បន្ន៖</td>
                         <td
                           style="
                             text-align: center;
@@ -298,15 +258,19 @@
                           {{ this.applicantOne.byUser.address }}
                         </td>
                       </tr>
-                    </table>
-
-                    <table>
                       <tr>
-                        <td style="width: 130px; border: none">សម័យប្រឡង</td>
-                        <td style="font-family: Moul Light; border: none">
+                        <td style="width: 100px; border: none">សម័យប្រឡង</td>
+                        <td
+                          style="
+                            text-align: center;
+                            width: 250px;
+                            font-family: Moul Light;
+                            border: none;
+                          "
+                        >
                           {{ formatDate(this.applicantOne.examDate) }}
                         </td>
-                        <td style="width: 50px; border: none">មណ្ឌលប្រឡង</td>
+                        <td style="width: 120px; border: none">មណ្ឌលប្រឡង</td>
                         <td
                           colspan="4"
                           style="
@@ -318,6 +282,9 @@
                           {{ this.applicantOne.examCenter }}
                         </td>
                       </tr>
+                    </table>
+
+                    <table>
                       <tr>
                         <td style="width: 80px; border: none">បន្ទប់លេខ</td>
                         <td
@@ -353,11 +320,11 @@
                     </table>
                     <table>
                       <tr>
-                        <td style="width: 250px; border: none"></td>
+                        <td style="width: 220px; border: none"></td>
                         <td
-                          style="width: 250px; text-align: center; border: none"
+                          style="width: 200px; text-align: center; border: none"
                         >
-                          រាជធានីភ្នំពេញ,ថ្ងៃទី...........ខែ.........ឆ្នាំ.........
+                          រាជធានីភ្នំពេញ,ថ្ងៃទី..........ខែ...........ឆ្នាំ..........
                           <br />
                           <p
                             style="
@@ -376,8 +343,6 @@
                 </div>
               </div>
             </div>
-            <div class="p-5"></div>
-            <div class="p-5"></div>
             <div class="p-5"></div>
             <div class="pt-5 ps-2">
               <qrcode-vue
@@ -453,9 +418,6 @@ export default {
       html2pdf().set(options).from(element).save();
     },
     formatDate(dateString) {
-      if (dateString == null) {
-        return "";
-      }
       const date = dayjs(dateString);
       return date.format("DD-MM-YYYY");
     },
@@ -531,8 +493,10 @@ export default {
 }
 
 tr,
+th,
 td {
-  border-style: solid 1px #000;
+  border: none;
+  border-style: none;
   background-color: #fff;
   color: #000 !important;
 }

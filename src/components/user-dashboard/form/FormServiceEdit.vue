@@ -17,9 +17,8 @@
             <input
               type="checkbox"
               class="form-check-input"
-              v-model="chkName"
-              name="agree"
-              id="chkName"
+              v-model="formData.is_name"
+               @click="checkName"
             />
           </td>
           <td class="p-1" style="white-space: nowrap">
@@ -30,7 +29,8 @@
               type="text"
               class="form-control"
               name="oldName"
-              v-model="oldName"
+              v-model="formData.old_name"
+              :readonly="!formData.is_name"
             />
           </td>
           <td class="p-1">
@@ -38,7 +38,8 @@
               type="text"
               class="form-control"
               name="newName"
-              v-model="newName"
+              v-model="formData.new_name"
+              :readonly="!formData.is_name"
             />
           </td>
         </tr>
@@ -49,26 +50,35 @@
             <input
               type="checkbox"
               class="form-check-input"
-              v-model="chkGender"
-              name="agree"
-              id="agree"
+              v-model="formData.is_gender"
+              @click="checkGender"
             />
           </td>
           <td class="p-1" style="white-space: nowrap">
             <span class=""> ភេទ</span>
           </td>
           <td class="p-1">
-            <select class="form-select form-select-lg" id="inputGroupSelect01">
-              <option selected>ជ្រើសរើសភេទ</option>
-              <option value="1">ប្រុស</option>
-              <option value="2">ស្រី</option>
+            <select
+              class="form-select form-select-lg"
+              id="inputGroupSelect01"
+              v-model="formData.old_gender"
+              :disabled="!formData.is_gender"              
+            >
+              <option selected disabled value="">ជ្រើសរើសភេទ</option>
+              <option value="male">ប្រុស</option>
+              <option value="female">ស្រី</option>
             </select>
           </td>
           <td class="p-1">
-            <select class="form-select form-select-lg" id="inputGroupSelect01">
-              <option selected>ជ្រើសរើសភេទ</option>
-              <option value="1">ប្រុស</option>
-              <option value="2">ស្រី</option>
+            <select
+              class="form-select form-select-lg"
+              id="inputGroupSelect01"
+              v-model="formData.new_gender"
+              :disabled="!formData.is_gender"
+            >
+              <option selected disabled value="">ជ្រើសរើសភេទ</option>
+              <option value="male">ប្រុស</option>
+              <option value="female">ស្រី</option>
             </select>
           </td>
         </tr>
@@ -79,9 +89,8 @@
             <input
               type="checkbox"
               class="form-check-input"
-              v-model="chkDob"
-              name="agree"
-              id="agree"
+              v-model="formData.is_dob"
+              @click="checkDob"
             />
           </td>
           <td class="p-1" style="white-space: nowrap">
@@ -93,7 +102,8 @@
               class="form-control"
               placeholder="dd-mm-yyyy"
               name="oldDob"
-              v-model="oldDob"
+              v-model="formData.old_dob"
+              :readonly="!formData.is_dob"
             />
           </td>
           <td class="p-1">
@@ -102,7 +112,8 @@
               placeholder="dd-mm-yyyy"
               class="form-control"
               name="newDob"
-              v-model="newDob"
+              v-model="formData.new_dob"
+              :readonly="!formData.is_dob"
             />
           </td>
         </tr>
@@ -112,9 +123,8 @@
             <input
               type="checkbox"
               class="form-check-input"
-              name="agree"
-              id="agree"
-              v-model="chkPob"
+              v-model="formData.is_pob"  
+              @click="checkPob"            
             />
           </td>
           <td class="p-1" style="white-space: nowrap">
@@ -126,7 +136,8 @@
               type="text"
               class="form-control"
               name="oldDob"
-              v-model="oldPob"
+              v-model="formData.old_pob"
+              :readonly="!formData.is_pob"
             />
           </td>
           <td class="p-1">
@@ -134,7 +145,8 @@
               type="text"
               class="form-control"
               name="newDob"
-              v-model="newPob"
+              v-model="formData.new_pob"
+              :readonly="!formData.is_pob"
             />
           </td>
         </tr>
@@ -145,9 +157,8 @@
             <input
               type="checkbox"
               class="form-check-input"
-              name="agree"
-              id="agree"
-              v-model="chkfather"
+              v-model="formData.is_father"
+              @click="checkFather"
             />
           </td>
           <td class="p-1" style="white-space: nowrap">
@@ -158,7 +169,8 @@
               type="text"
               class="form-control"
               name="oldDob"
-              v-model="oldFather"
+              v-model="formData.old_father"
+              :readonly="!formData.is_father"
             />
           </td>
           <td class="p-1">
@@ -166,7 +178,8 @@
               type="text"
               class="form-control"
               name="newDob"
-              v-model="newFather"
+              v-model="formData.new_father"
+              :readonly="!formData.is_father"
             />
           </td>
         </tr>
@@ -177,9 +190,8 @@
             <input
               type="checkbox"
               class="form-check-input"
-              name="agree"
-              id="agree"
-              v-model="chkMother"
+              v-model="formData.is_mother"
+              @click="checkMother"
             />
           </td>
           <td class="p-1" style="white-space: nowrap">
@@ -190,7 +202,8 @@
               type="text"
               class="form-control"
               name="oldDob"
-              v-model="oldMother"
+              v-model="formData.old_mother"
+              :readonly="!formData.is_mother"
             />
           </td>
           <td class="p-1">
@@ -198,7 +211,8 @@
               type="text"
               class="form-control"
               name="newDob"
-              v-model="newMother"
+              v-model="formData.new_mother"
+              :readonly="!formData.is_mother"
             />
           </td>
         </tr>
@@ -208,6 +222,77 @@
   </div>
   <!-- </form> -->
 </template>
+
+<script>
+import { useApplicant } from "@/store/applicant";
+import { mapState, mapActions } from "pinia";
+
+export default {
+  data() {
+    return {
+      formData: {
+        is_name: "",
+        old_name: "",
+        new_name: "",
+        is_gender: "",
+        old_gender: "",
+        new_gender: "",
+        is_dob: "",
+        old_dob: "",
+        new_dob: "",
+        is_pob: "",
+        old_pob: "",
+        new_pob: "",
+        is_father: "",
+        old_father: "",
+        new_father: "",
+        is_mother: "",
+        old_mother: "",
+        new_mother: "",
+      },
+    };
+  },
+  mounted() {
+    this.formData = this.editData;
+    //console.log(this.formData);
+  },
+  unmounted() {
+    this.setEdit(this.formData);
+    //console.log(this.editData);
+  },
+  computed: {
+    ...mapState(useApplicant, ["editData"]),
+  },
+  methods: {
+    ...mapActions(useApplicant, ["setEdit"]),
+    checkName(){
+      this.formData.old_name = "";
+      this.formData.new_name = "";
+    },
+    checkGender(){
+      this.formData.old_gender = "";
+      this.formData.new_gender = "";
+    },
+    checkDob(){
+      this.formData.old_dob = "";
+      this.formData.new_dob = "";
+    },
+    checkPob(){
+      this.formData.old_pob = "";
+      this.formData.new_pob = "";
+    },
+    checkFather(){
+      this.formData.old_father = "";
+      this.formData.new_father = "";
+    },
+    checkMother(){
+      this.formData.old_mother = "";
+      this.formData.new_mother = "";
+    }
+
+  },
+};
+</script>
 
 
 <style scoped>

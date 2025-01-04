@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 //import your components
-// import Home from "@/views/Home.vue";
 import Login from "@/views/Login.vue";
 import Register from "@/views/Register.vue";
 import UserDashboard from "@/views/UserDashboard.vue";
@@ -9,58 +8,29 @@ import ContainDash from "@/components/user-dashboard/ContainDash.vue";
 import ListServices from "@/components/user-dashboard/list-services/ListServices.vue";
 import Profile from "@/components/user-dashboard/profile/Profile.vue";
 import ProfileSetting from "@/components/user-dashboard/profile/ProfileSetting.vue";
-import ServiceDetail from "@/components/user-dashboard/list-services/ServiceDetail.vue";
+import FormView from "@/components/user-dashboard/form-view/FormView.vue";
 //------------------report------------------------------
-import NewCertificate from "@/components/user-dashboard/reports/NewCertificate.vue";
+import reissueReport from "@/components/user-dashboard/reports/reissueReport.vue";
 import verifyReport from "@/components/user-dashboard/reports/verifyReport.vue";
 import editReport from "@/components/user-dashboard/reports/editReport.vue";
+import FormEditContain from "@/components/user-dashboard/form-edit/FormEditContain.vue";
+import ReceiptStatus from "@/components/user-dashboard/reports/ReceiptStatus.vue";
 //--------------------------------------------------------
 
 const routes = [
   { path: "/", component: Login },
-  // { path: "/login", component: Login },
   { path: "/register", component: Register },
-  //-----------------report------------------------------
   {
-    path: "/invoice/print/:id:itemData?",
-    component: NewCertificate,
-    name: "printinvoice",
-    props: (route) => ({
-      id: route.params.id,
-      itemData: route.params.itemData
-        ? JSON.parse(route.params.itemData)
-        : null,
-    }),
+    path: "/:id",
+    component: ReceiptStatus,
+    props: true,
   },
-  {
-    path: "/invoice/printverify/:id:itemData?",
-    component: verifyReport,
-    name: "verifyreport",
-    props: (route) => ({
-      id: route.params.id,
-      itemData: route.params.itemData
-        ? JSON.parse(route.params.itemData)
-        : null,
-    }),
-  },
-  {
-    path: "/invoice/printedit/:id:itemData?",
-    component: editReport,
-    name: "editreport",
-    props: (route) => ({
-      id: route.params.id,
-      itemData: route.params.itemData
-        ? JSON.parse(route.params.itemData)
-        : null,
-    }),
-  },
-  //-------------------------------------------
   {
     path: "/user-dashboard",
     component: UserDashboard,
     children: [
       {
-        path: "",
+        path: "/user-dashboard",
         name: "ដាក់ពាក្យស្នើសុំ",
         component: ContainDash,
       },
@@ -72,11 +42,31 @@ const routes = [
       {
         path: "/user-dashboard/view-service",
         name: "ព័ត៌មានសេវាលម្អិត",
-        component: ServiceDetail,
+        component: FormView,
+      },
+      {
+        path: "/user-dashboard/edit-service",
+        name: "កែប្រែព័ត៌មានសេវា",
+        component: FormEditContain,
+      },
+      {
+        path: "/user-dashboard/print-verify",
+        name: "បង្កាន់ដៃបញ្ជាក់ភាពត្រឹមត្រូវ",
+        component: verifyReport,
+      },
+      {
+        path: "/user-dashboard/print-edit",
+        name: "បង្កាន់ដៃកែតម្រូវ",
+        component: editReport,
+      },
+      {
+        path: "/user-dashboard/print-reissue",
+        name: "បង្កាន់ដៃទុតិយតា",
+        component: reissueReport,
       },
       {
         path: "/user-dashboard/profile",
-        name: "គណនេយ្យ",
+        name: "គណនី",
         component: Profile,
       },
       {
