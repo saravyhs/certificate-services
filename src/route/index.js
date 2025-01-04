@@ -21,7 +21,7 @@ const routes = [
   { path: "/", component: Login },
   { path: "/register", component: Register },
   {
-    path: "/qr-code/:id",
+    path: "/:id",
     component: ReceiptStatus,
     props: true,
   },

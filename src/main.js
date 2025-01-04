@@ -1,10 +1,5 @@
 import { createApp } from "vue";
 import App from "./App.vue";
-//=======================================
-import "./assets/css/kaiadmin.css";
-import "./assets/js/kaiadmin.js";
-import "./assets/js/kaiadmin.min.js";
-//=======================================
 import { createPinia } from "pinia";
 import piniaPluginPersistedstate from "pinia-plugin-persistedstate";
 import router from "./route";
